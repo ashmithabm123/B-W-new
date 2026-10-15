@@ -3,5 +3,6 @@
         "c:/Users/Admin/OneDrive - StayAhead/Documents/Projects/B&W/Temp1/Output/.vscode/excel-pq-symbols",
         "c:/Users/Admin/OneDrive - StayAhead/Documents/Projects/B&W/Temp1/temp1/.vscode/excel-pq-symbols",
         "c:/Users/Admin/OneDrive - StayAhead/Documents/Projects/B&W/Combined/B-W/.vscode/excel-pq-symbols"
-    ]
+    ],
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }
