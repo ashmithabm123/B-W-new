@@ -26,16 +26,39 @@ COMMON_OPTIONS = {
 
 # Exceptions only. The key must match the input file name (without extension).
 CLIENT_OVERRIDES = {
+    "Executive Financial Consultants": {
+        "applied_from_payment": False,
+        "applied_formula": True,
+        "skip_interest_only": False,
+        "total_from_components": True,
+        "separate_interest_only": True,
+        "master_share_calculation": True,
+    },
     "NKC Health": {"fees_as_principal": False},
     "Dentistry for Children": {"skip_zero_payment": True},
     "Consumer Collection Management, Inc.": {"skip_interest_only": True,
                                              "applied_from_payment": False,
-                                             "total_from_components": True},
+                                             "total_from_components": True,
+                                             "applied_formula": True},
+    "Consumer Collection Management, Inc. 2": {
+        "applied_from_payment": False,
+        "applied_formula": True,
+        "skip_interest_only": False,
+        "total_from_components": True,
+        "skip_zero_total_payments": True,
+        "separate_interest_only": True,
+        "intonly_compact": True,
+        "intonly_title": "Consumer Collection Management",
+        "master_share_calculation": True,
+        "include_other_only": True,
+    },
 }
 
 OPTION_KEYS = ("include_cost_only", "fees_as_principal", "thru_word",
                "pct_fmt", "applied_from_payment", "skip_zero_payment",
-               "skip_interest_only", "total_from_components")
+               "skip_interest_only", "total_from_components", "applied_formula",
+               "separate_interest_only", "master_share_calculation",
+               "skip_zero_total_payments", "intonly_compact", "intonly_title")
 
 
 def _text(value, default):
@@ -68,6 +91,13 @@ def process_file(input_path: Path, config: dict, out_dir: Path, log):
         client_name,
         SHARE_COLUMN,
     )
+    if cfg.get("master_share_calculation"):
+        master_file = cfg.get("master_file", "input/MasterDatatable_1.xlsx")
+        master_sheet = cfg.get("master_sheet", "IntrestPercentage_Temp2")
+        cfg["bw_share_pct"] = get_client_share(
+            master_file, master_sheet, client_name, "BWShare")
+        cfg["bw_interest_pct"] = get_client_share(
+            master_file, master_sheet, client_name, "BW Interest %")
 
     expected = find_expected_totals(
         cfg["input_file"], cfg["sheet_name"], cfg["report_columns"],
@@ -85,7 +115,8 @@ def process_file(input_path: Path, config: dict, out_dir: Path, log):
     valid = keep_valid_rows(df, PRINCIPAL_COL, INTEREST_COL, cfg["rule_mode"],
                             include_cost_only=cfg.get("include_cost_only", False),
                             fees_as_principal=cfg.get("fees_as_principal", True),
-                            skip_interest_only=cfg.get("skip_interest_only", False))
+                            skip_interest_only=cfg.get("skip_interest_only", False),
+                            include_other_only=cfg.get("include_other_only", False))
     for _, r in valid.iterrows():
         if abs(r.iloc[3] - 50.69) < 0.005 or abs(r.iloc[5] - 50.69) < 0.005:
             log.info("DEBUG 50.69: %s | pay %.2f | prin %.2f | int %.2f | fees %.2f | costs %.2f",

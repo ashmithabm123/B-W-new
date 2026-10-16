@@ -8,7 +8,8 @@ def keep_valid_rows(df: pd.DataFrame, col_a: int, col_b: int,
                     rule_mode: str = "BOTH", fees_col: int = 7,
                     include_cost_only: bool = False,
                     fees_as_principal: bool = True,
-                    skip_interest_only: bool = False) -> pd.DataFrame:
+                    skip_interest_only: bool = False,
+                    include_other_only: bool = False) -> pd.DataFrame:
     a = df.iloc[:, col_a]
     b = df.iloc[:, col_b]
     mode = rule_mode.upper()
@@ -20,6 +21,8 @@ def keep_valid_rows(df: pd.DataFrame, col_a: int, col_b: int,
             mask = mask | ((a == 0) & (b == 0) & (fees != 0))
         if include_cost_only:         # only when enabled for this client
             mask = mask | (df.iloc[:, 8] != 0)
+        if include_other_only:
+            mask = mask | (df["Other"] != 0)
     elif mode == "ANY":               # either one is non-zero
         mask = (a != 0) | (b != 0)
     else:                             # BOTH: both columns non-zero
