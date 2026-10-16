@@ -11989,3 +11989,927 @@ ValueError: Identifier 'Cost Detail Report' not found in any sheet
 2026-10-16 16:24:17,948 | INFO | Cost sheet added to output\NKC Health.xlsx
 2026-10-16 16:24:17,948 | INFO | Finished. Success: 6 | Failed: 4 ['Arista Recovery Operator at Paola, LLC.xls', 'Consumer Collection Management, Inc.- Probate.xls', 'FBKC Sports Tenant LLC dba HyVee Arena.xls', 'Meduit Group, LLC.xls']
 2026-10-16 16:24:17,948 | INFO | ===== Run finished =====
+2026-10-16 16:43:00,936 | INFO | ===== Temp1 run started =====
+2026-10-16 16:43:00,937 | ERROR | Temp1 run failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp1\src1\main_temp1.py", line 44, in run_temp1
+    files = get_input_files(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp1\src1\t1_reader.py", line 21, in get_input_files
+    raise FileNotFoundError(f"Temp1 input folder not found: {folder}")
+FileNotFoundError: Temp1 input folder not found: C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\Combined\Input
+2026-10-16 16:43:00,939 | INFO | Done: 0 | Failed: 0 
+2026-10-16 16:43:00,940 | INFO | ===== Temp1 run finished =====
+2026-10-16 16:43:00,949 | INFO | ===== Run started =====
+2026-10-16 16:43:00,953 | INFO | Input files found: 10 -> ['Arista Recovery Operator at Paola, LLC.xls', 'Consumer Collection Management, Inc. 2.xls', 'Consumer Collection Management, Inc.- Probate.xls', 'Consumer Collection Management, Inc..xls', 'Dentistry for Children.xls', 'Executive Financial Consultants 2.xls', 'Executive Financial Consultants.xls', 'FBKC Sports Tenant LLC dba HyVee Arena.xls', 'Meduit Group, LLC.xls', 'NKC Health.xls']
+2026-10-16 16:43:00,954 | INFO | DEBUG client_name='Arista Recovery Operator at Paola, LLC' | override found=False
+2026-10-16 16:43:00,954 | INFO | ----- Processing: Arista Recovery Operator at Paola, LLC.xls -----
+2026-10-16 16:43:00,964 | INFO | Client share for 'Arista Recovery Operator at Paola, LLC' = 33.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:00,970 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:00,976 | INFO | Reading file: input\Arista Recovery Operator at Paola, LLC.xls
+2026-10-16 16:43:00,979 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:00,980 | INFO | Using sheet: Sheet1
+2026-10-16 16:43:00,984 | INFO | Totals row found at row 42, skipping it: [1396.1100000000001, 0, 1396.1100000000001, 0, 0, 0, 0, 0, 1396.1100000000001, 460.71000000000004]
+2026-10-16 16:43:00,987 | INFO | Totals row found at row 96, skipping it: [1396.1100000000001, 0, 1396.1100000000001, 0, 0, 0, 0, 0, 1396.1100000000001, 460.71000000000004]
+2026-10-16 16:43:00,987 | INFO | Totals row found at row 97, skipping it: [1396.1100000000001, 0, 1396.1100000000001, 0, 0, 0, 0, 0, 1396.1100000000001, 460.71000000000004]
+2026-10-16 16:43:00,989 | INFO | Debtor rows read: 1
+2026-10-16 16:43:00,989 | INFO | Column 5: expected 1396.11, got 1396.11 -> PASS
+2026-10-16 16:43:00,990 | INFO | Column 6: expected 0.00, got 0.00 -> PASS
+2026-10-16 16:43:00,990 | INFO | Rule: SUM | columns 5 and 6 | total: 1 | valid: 1 | removed: 0
+2026-10-16 16:43:00,992 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 16:43:01,016 | INFO | Saved valid data to output\Arista Recovery Operator at Paola, LLC.xlsx
+2026-10-16 16:43:01,017 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:43:01,073 | INFO | First sheet formatted with 1 rows and 0 interest-only rows
+2026-10-16 16:43:01,081 | ERROR | FAILED: Arista Recovery Operator at Paola, LLC.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 181, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 146, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 16:43:01,084 | INFO | DEBUG client_name='Consumer Collection Management, Inc. 2' | override found=True
+2026-10-16 16:43:01,084 | INFO | ----- Processing: Consumer Collection Management, Inc. 2.xls -----
+2026-10-16 16:43:01,091 | INFO | Client share for 'Consumer Collection Management, Inc. 2' = 15.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:01,100 | INFO | Client share for 'Consumer Collection Management, Inc. 2' = 85.00% (column 'BWShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:01,109 | INFO | Client share for 'Consumer Collection Management, Inc. 2' = 100.00% (column 'BW Interest %', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:01,120 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:01,317 | INFO | Reading file: input\Consumer Collection Management, Inc. 2.xls
+2026-10-16 16:43:01,386 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:01,386 | INFO | Using sheet: Sheet1
+2026-10-16 16:43:01,443 | INFO | Totals row found at row 558, skipping it: [59097.99, 106.53, 49090.97, 6689.97, 1057.02, 2004.94, 0, 9659.09, 44513.340000000004, 14239.01]
+2026-10-16 16:43:01,469 | INFO | Totals row found at row 939, skipping it: [59097.99, 106.53, 49090.97, 6689.97, 1057.02, 2004.94, 0, 9659.09, 44513.340000000004, 14239.01]
+2026-10-16 16:43:01,471 | INFO | Totals row found at row 940, skipping it: [59097.99, 106.53, 49090.97, 6689.97, 1057.02, 2004.94, 0, 9659.09, 44513.340000000004, 14239.01]
+2026-10-16 16:43:01,474 | INFO | Debtor rows read: 246
+2026-10-16 16:43:01,474 | INFO | Column 5: expected 49090.97, got 49090.97 -> PASS
+2026-10-16 16:43:01,474 | INFO | Column 6: expected 6689.97, got 6689.97 -> PASS
+2026-10-16 16:43:01,474 | INFO | Rule: SUM | columns 5 and 6 | total: 246 | valid: 139 | removed: 107
+2026-10-16 16:43:01,490 | INFO | DEBUG rows added by cost-only rule: 4
+2026-10-16 16:43:01,492 | INFO | DEBUG added: Curtis M Moke | pay 200.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 200.00
+2026-10-16 16:43:01,492 | INFO | DEBUG added: Jonathan P. Palmer | pay 83.69 | prin 0.00 | int 0.00 | fees 0.00 | costs 83.69
+2026-10-16 16:43:01,492 | INFO | DEBUG added: Angela Sanders | pay 2.05 | prin 0.00 | int 0.00 | fees 0.00 | costs 2.05
+2026-10-16 16:43:01,492 | INFO | DEBUG added: Marissa K. Stephens | pay 24.22 | prin 0.00 | int 0.00 | fees 0.00 | costs 24.22
+2026-10-16 16:43:01,492 | INFO | DEBUG pay<=0: Robin L. Schmidt | pay 0.00 | prin 106.53 | int 0.00 | costs 0.00
+2026-10-16 16:43:01,580 | INFO | Saved valid data to output\Consumer Collection Management, Inc. 2.xlsx
+2026-10-16 16:43:01,586 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=False | total_from_components=True | applied_formula=True
+2026-10-16 16:43:01,746 | INFO | First sheet formatted with 119 rows and 19 interest-only rows
+2026-10-16 16:43:01,784 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 568
+2026-10-16 16:43:01,791 | INFO | Cost rows read: 179 | total: 9659.09
+2026-10-16 16:43:01,791 | INFO | Cost total: expected 9659.09, got 9659.09 -> PASS
+2026-10-16 16:43:01,902 | INFO | Sheet 'Cost' written with 179 rows
+2026-10-16 16:43:01,902 | INFO | Cost sheet added to output\Consumer Collection Management, Inc. 2.xlsx
+2026-10-16 16:43:01,902 | INFO | DEBUG client_name='Consumer Collection Management, Inc.- Probate' | override found=False
+2026-10-16 16:43:01,902 | INFO | ----- Processing: Consumer Collection Management, Inc.- Probate.xls -----
+2026-10-16 16:43:01,913 | INFO | Client share for 'Consumer Collection Management, Inc.- Probate' = 18.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:01,921 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:01,935 | INFO | Reading file: input\Consumer Collection Management, Inc.- Probate.xls
+2026-10-16 16:43:01,935 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:01,942 | INFO | Using sheet: Sheet1
+2026-10-16 16:43:01,949 | INFO | Totals row found at row 55, skipping it: [400, 35, 435, 0, 0, 0, 0, 0, 328, 78.3]
+2026-10-16 16:43:01,954 | INFO | Totals row found at row 94, skipping it: [400, 35, 435, 0, 0, 0, 0, 0, 328, 78.3]
+2026-10-16 16:43:01,954 | INFO | Totals row found at row 95, skipping it: [400, 35, 435, 0, 0, 0, 0, 0, 328, 78.3]
+2026-10-16 16:43:01,956 | INFO | Debtor rows read: 2
+2026-10-16 16:43:01,957 | INFO | Column 5: expected 435.00, got 435.00 -> PASS
+2026-10-16 16:43:01,957 | INFO | Column 6: expected 0.00, got 0.00 -> PASS
+2026-10-16 16:43:01,958 | INFO | Rule: SUM | columns 5 and 6 | total: 2 | valid: 2 | removed: 0
+2026-10-16 16:43:01,959 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 16:43:01,959 | INFO | DEBUG pay<=0: Mary Beth Nelson | pay 0.00 | prin 35.00 | int 0.00 | costs 0.00
+2026-10-16 16:43:01,979 | INFO | Saved valid data to output\Consumer Collection Management, Inc.- Probate.xlsx
+2026-10-16 16:43:01,979 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:43:02,002 | INFO | First sheet formatted with 1 rows and 0 interest-only rows
+2026-10-16 16:43:02,012 | ERROR | FAILED: Consumer Collection Management, Inc.- Probate.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 181, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 146, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 16:43:02,012 | INFO | DEBUG client_name='Consumer Collection Management, Inc.' | override found=True
+2026-10-16 16:43:02,012 | INFO | ----- Processing: Consumer Collection Management, Inc..xls -----
+2026-10-16 16:43:02,026 | INFO | Client share for 'Consumer Collection Management, Inc.' = 18.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:02,030 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:02,062 | INFO | Reading file: input\Consumer Collection Management, Inc..xls
+2026-10-16 16:43:02,070 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:02,070 | INFO | Using sheet: Sheet1
+2026-10-16 16:43:02,139 | INFO | Totals row found at row 364, skipping it: [35011.98, 752.73, 28232.03, 3560, 309.63, 2827.92, 0, 2466.37, 25614.89, 8697.45]
+2026-10-16 16:43:02,164 | INFO | Totals row found at row 646, skipping it: [35011.98, 752.73, 28232.03, 3560, 309.63, 2827.92, 0, 2466.37, 25614.89, 8697.45]
+2026-10-16 16:43:02,164 | INFO | Totals row found at row 647, skipping it: [35011.98, 752.73, 28232.03, 3560, 309.63, 2827.92, 0, 2466.37, 25614.89, 8697.45]
+2026-10-16 16:43:02,164 | INFO | Debtor rows read: 149
+2026-10-16 16:43:02,164 | INFO | Column 5: expected 28232.03, got 28232.03 -> PASS
+2026-10-16 16:43:02,164 | INFO | Column 6: expected 3560.00, got 3560.00 -> PASS
+2026-10-16 16:43:02,173 | INFO | Rule: SUM | columns 5 and 6 | total: 149 | valid: 104 | removed: 45
+2026-10-16 16:43:02,182 | INFO | DEBUG rows added by cost-only rule: 6
+2026-10-16 16:43:02,182 | INFO | DEBUG added: Michelle M. Belt | pay 97.13 | prin 0.00 | int 0.00 | fees 0.00 | costs 97.13
+2026-10-16 16:43:02,182 | INFO | DEBUG added: James R. Connell | pay 50.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 50.00
+2026-10-16 16:43:02,182 | INFO | DEBUG added: Lucinda L. Cooksey | pay 128.80 | prin 0.00 | int 0.00 | fees 0.00 | costs 128.80
+2026-10-16 16:43:02,182 | INFO | DEBUG added: Dana N. De Lossantos Bravo | pay 46.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 46.00
+2026-10-16 16:43:02,182 | INFO | DEBUG added: Samantha Gibson | pay 200.00 | prin 0.00 | int 0.00 | fees 46.00 | costs 154.00
+2026-10-16 16:43:02,187 | INFO | DEBUG added: Autumn Rose Hernandez | pay 0.11 | prin 0.00 | int 0.00 | fees 0.00 | costs 0.11
+2026-10-16 16:43:02,188 | INFO | DEBUG pay<=0: Cheyane F. Brown | pay 0.00 | prin 15.00 | int 0.00 | costs 0.00
+2026-10-16 16:43:02,189 | INFO | DEBUG pay<=0: Nicole Crawford-Ducey | pay 0.00 | prin 712.73 | int 0.00 | costs 0.00
+2026-10-16 16:43:02,272 | INFO | Saved valid data to output\Consumer Collection Management, Inc..xlsx
+2026-10-16 16:43:02,272 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=True | applied_from_payment=False | total_from_components=True | applied_formula=True
+2026-10-16 16:43:02,372 | INFO | First sheet formatted with 102 rows and 0 interest-only rows
+2026-10-16 16:43:02,396 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 374
+2026-10-16 16:43:02,399 | INFO | Cost rows read: 54 | total: 2466.37
+2026-10-16 16:43:02,399 | INFO | Cost total: expected 2466.37, got 2466.37 -> PASS
+2026-10-16 16:43:02,486 | INFO | Sheet 'Cost' written with 54 rows
+2026-10-16 16:43:02,486 | INFO | Cost sheet added to output\Consumer Collection Management, Inc..xlsx
+2026-10-16 16:43:02,486 | INFO | DEBUG client_name='Dentistry for Children' | override found=True
+2026-10-16 16:43:02,486 | INFO | ----- Processing: Dentistry for Children.xls -----
+2026-10-16 16:43:02,494 | INFO | Client share for 'Dentistry for Children' = 30.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:02,500 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:02,504 | INFO | Reading file: input\Dentistry for Children.xls
+2026-10-16 16:43:02,508 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:02,508 | INFO | Using sheet: Sheet1
+2026-10-16 16:43:02,514 | INFO | Totals row found at row 60, skipping it: [2919.58, 463.42, 2421.2000000000003, 80.92, 76.88, 804, 0, 403.75, 2919.58, 726.36]
+2026-10-16 16:43:02,517 | INFO | Totals row found at row 136, skipping it: [2919.58, 463.42, 2421.2000000000003, 80.92, 76.88, 804, 0, 403.75, 2919.58, 726.36]
+2026-10-16 16:43:02,517 | INFO | Totals row found at row 137, skipping it: [2919.58, 463.42, 2421.2000000000003, 80.92, 76.88, 804, 0, 403.75, 2919.58, 726.36]
+2026-10-16 16:43:02,517 | INFO | Debtor rows read: 10
+2026-10-16 16:43:02,517 | INFO | Column 5: expected 2421.20, got 2421.20 -> PASS
+2026-10-16 16:43:02,517 | INFO | Column 6: expected 80.92, got 80.92 -> PASS
+2026-10-16 16:43:02,517 | INFO | Rule: SUM | columns 5 and 6 | total: 10 | valid: 6 | removed: 4
+2026-10-16 16:43:02,517 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 16:43:02,524 | INFO | DEBUG pay<=0: Lindsey E. Biggers | pay 0.00 | prin 302.50 | int 4.54 | costs 111.00
+2026-10-16 16:43:02,537 | INFO | Saved valid data to output\Dentistry for Children.xlsx
+2026-10-16 16:43:02,537 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:43:02,560 | INFO | First sheet formatted with 5 rows and 0 interest-only rows
+2026-10-16 16:43:02,564 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 70
+2026-10-16 16:43:02,564 | WARNING | No plaintiff found for claim 3404259.001
+2026-10-16 16:43:02,564 | WARNING | No plaintiff found for claim 3404259.001
+2026-10-16 16:43:02,564 | WARNING | No plaintiff found for claim 3404248.001
+2026-10-16 16:43:02,572 | WARNING | No plaintiff found for claim 3404482.001
+2026-10-16 16:43:02,572 | WARNING | No plaintiff found for claim 3406887.001
+2026-10-16 16:43:02,572 | WARNING | No plaintiff found for claim 3406887.001
+2026-10-16 16:43:02,572 | INFO | Cost rows read: 6 | total: 403.75
+2026-10-16 16:43:02,573 | INFO | Cost total: expected 403.75, got 403.75 -> PASS
+2026-10-16 16:43:02,609 | INFO | Sheet 'Cost' written with 6 rows
+2026-10-16 16:43:02,609 | INFO | Cost sheet added to output\Dentistry for Children.xlsx
+2026-10-16 16:43:02,609 | INFO | DEBUG client_name='Executive Financial Consultants 2' | override found=False
+2026-10-16 16:43:02,609 | INFO | ----- Processing: Executive Financial Consultants 2.xls -----
+2026-10-16 16:43:02,620 | INFO | Client share for 'Executive Financial Consultants 2' = 12.50% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:02,626 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:02,658 | INFO | Reading file: input\Executive Financial Consultants 2.xls
+2026-10-16 16:43:02,664 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:02,664 | INFO | Using sheet: Sheet1
+2026-10-16 16:43:02,675 | INFO | Totals row found at row 127, skipping it: [11295.99, 0, 7375.45, 2893.54, 0, 1027, 0, 2260, 11295.99, 3842.4700000000003]
+2026-10-16 16:43:02,683 | INFO | Totals row found at row 286, skipping it: [11295.99, 0, 7375.45, 2893.54, 0, 1027, 0, 2260, 11295.99, 3842.4700000000003]
+2026-10-16 16:43:02,683 | INFO | Totals row found at row 287, skipping it: [11295.99, 0, 7375.45, 2893.54, 0, 1027, 0, 2260, 11295.99, 3842.4700000000003]
+2026-10-16 16:43:02,683 | INFO | Debtor rows read: 38
+2026-10-16 16:43:02,683 | INFO | Column 5: expected 7375.45, got 7375.45 -> PASS
+2026-10-16 16:43:02,683 | INFO | Column 6: expected 2893.54, got 2893.54 -> PASS
+2026-10-16 16:43:02,683 | INFO | Rule: SUM | columns 5 and 6 | total: 38 | valid: 14 | removed: 24
+2026-10-16 16:43:02,683 | INFO | DEBUG rows added by cost-only rule: 2
+2026-10-16 16:43:02,683 | INFO | DEBUG added: Eric D. Martin | pay 100.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 100.00
+2026-10-16 16:43:02,683 | INFO | DEBUG added: Dalton Webb | pay 100.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 100.00
+2026-10-16 16:43:02,791 | INFO | Saved valid data to output\Executive Financial Consultants 2.xlsx
+2026-10-16 16:43:02,791 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:43:02,829 | INFO | First sheet formatted with 11 rows and 0 interest-only rows
+2026-10-16 16:43:02,853 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 137
+2026-10-16 16:43:02,855 | INFO | Cost rows read: 42 | total: 2260.00
+2026-10-16 16:43:02,855 | INFO | Cost total: expected 2260.00, got 2260.00 -> PASS
+2026-10-16 16:43:02,890 | INFO | Sheet 'Cost' written with 42 rows
+2026-10-16 16:43:02,890 | INFO | Cost sheet added to output\Executive Financial Consultants 2.xlsx
+2026-10-16 16:43:02,890 | INFO | DEBUG client_name='Executive Financial Consultants' | override found=True
+2026-10-16 16:43:02,890 | INFO | ----- Processing: Executive Financial Consultants.xls -----
+2026-10-16 16:43:02,897 | INFO | Client share for 'Executive Financial Consultants' = 18.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:02,907 | INFO | Client share for 'Executive Financial Consultants' = 82.00% (column 'BWShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:02,912 | INFO | Client share for 'Executive Financial Consultants' = 100.00% (column 'BW Interest %', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:02,925 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:02,954 | INFO | Reading file: input\Executive Financial Consultants.xls
+2026-10-16 16:43:02,965 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:02,965 | INFO | Using sheet: Sheet1
+2026-10-16 16:43:02,991 | INFO | Totals row found at row 76, skipping it: [674.33, 0, 375, 285.41, 0, 0, 0, 183, 660.41, 339.17]
+2026-10-16 16:43:02,997 | INFO | Totals row found at row 621, skipping it: [674.33, 0, 375, 285.41, 0, 0, 0, 183, 660.41, 339.17]
+2026-10-16 16:43:02,997 | INFO | Totals row found at row 622, skipping it: [674.33, 0, 375, 285.41, 0, 0, 0, 183, 660.41, 339.17]
+2026-10-16 16:43:03,010 | INFO | Debtor rows read: 11
+2026-10-16 16:43:03,010 | INFO | Column 5: expected 375.00, got 375.00 -> PASS
+2026-10-16 16:43:03,010 | INFO | Column 6: expected 285.41, got 285.41 -> PASS
+2026-10-16 16:43:03,011 | INFO | Rule: SUM | columns 5 and 6 | total: 11 | valid: 8 | removed: 3
+2026-10-16 16:43:03,013 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 16:43:03,023 | INFO | Saved valid data to output\Executive Financial Consultants.xlsx
+2026-10-16 16:43:03,023 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=False | total_from_components=True | applied_formula=True
+2026-10-16 16:43:03,068 | INFO | First sheet formatted with 5 rows and 3 interest-only rows
+2026-10-16 16:43:03,083 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 86
+2026-10-16 16:43:03,083 | INFO | Cost rows read: 5 | total: 183.00
+2026-10-16 16:43:03,083 | INFO | Cost total: expected 183.00, got 183.00 -> PASS
+2026-10-16 16:43:03,123 | INFO | Sheet 'Cost' written with 5 rows
+2026-10-16 16:43:03,123 | INFO | Cost sheet added to output\Executive Financial Consultants.xlsx
+2026-10-16 16:43:03,123 | INFO | DEBUG client_name='FBKC Sports Tenant LLC dba HyVee Arena' | override found=False
+2026-10-16 16:43:03,123 | INFO | ----- Processing: FBKC Sports Tenant LLC dba HyVee Arena.xls -----
+2026-10-16 16:43:03,130 | INFO | Client share for 'FBKC Sports Tenant LLC dba HyVee Arena' = 33.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:03,136 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:03,140 | INFO | Reading file: input\FBKC Sports Tenant LLC dba HyVee Arena.xls
+2026-10-16 16:43:03,141 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:03,141 | INFO | Using sheet: Sheet1
+2026-10-16 16:43:03,146 | INFO | Totals row found at row 45, skipping it: [1000, 0, 0, 0, 234.72, 359.15000000000003, 406.13, 0, 788.52, 211.48000000000002]
+2026-10-16 16:43:03,154 | INFO | Totals row found at row 74, skipping it: [1000, 0, 0, 0, 234.72, 359.15000000000003, 406.13, 0, 788.52, 211.48000000000002]
+2026-10-16 16:43:03,155 | INFO | Totals row found at row 75, skipping it: [1000, 0, 0, 0, 234.72, 359.15000000000003, 406.13, 0, 788.52, 211.48000000000002]
+2026-10-16 16:43:03,156 | INFO | Debtor rows read: 1
+2026-10-16 16:43:03,156 | INFO | Column 5: expected 0.00, got 0.00 -> PASS
+2026-10-16 16:43:03,156 | INFO | Column 6: expected 0.00, got 0.00 -> PASS
+2026-10-16 16:43:03,157 | INFO | Rule: SUM | columns 5 and 6 | total: 1 | valid: 1 | removed: 0
+2026-10-16 16:43:03,168 | INFO | DEBUG rows added by cost-only rule: 1
+2026-10-16 16:43:03,170 | INFO | DEBUG added: JustUs System Inc. | pay 1000.00 | prin 0.00 | int 0.00 | fees 234.72 | costs 359.15
+2026-10-16 16:43:03,185 | INFO | Saved valid data to output\FBKC Sports Tenant LLC dba HyVee Arena.xlsx
+2026-10-16 16:43:03,185 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:43:03,206 | INFO | First sheet formatted with 1 rows and 0 interest-only rows
+2026-10-16 16:43:03,212 | ERROR | FAILED: FBKC Sports Tenant LLC dba HyVee Arena.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 181, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 146, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 16:43:03,212 | INFO | DEBUG client_name='Meduit Group, LLC' | override found=False
+2026-10-16 16:43:03,212 | INFO | ----- Processing: Meduit Group, LLC.xls -----
+2026-10-16 16:43:03,223 | INFO | Client share for 'Meduit Group, LLC' = 12.50% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:03,227 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:03,233 | INFO | Reading file: input\Meduit Group, LLC.xls
+2026-10-16 16:43:03,237 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:03,237 | INFO | Using sheet: Sheet1
+2026-10-16 16:43:03,240 | INFO | Totals row found at row 54, skipping it: [1449.08, 0, 1274.08, 100, 0, 75, 0, 0, 1449.08, 259.28000000000003]
+2026-10-16 16:43:03,241 | INFO | Totals row found at row 133, skipping it: [1449.08, 0, 1274.08, 100, 0, 75, 0, 0, 1449.08, 259.28000000000003]
+2026-10-16 16:43:03,241 | INFO | Totals row found at row 134, skipping it: [1449.08, 0, 1274.08, 100, 0, 75, 0, 0, 1449.08, 259.28000000000003]
+2026-10-16 16:43:03,244 | INFO | Debtor rows read: 6
+2026-10-16 16:43:03,244 | INFO | Column 5: expected 1274.08, got 1274.08 -> PASS
+2026-10-16 16:43:03,245 | INFO | Column 6: expected 100.00, got 100.00 -> PASS
+2026-10-16 16:43:03,246 | INFO | Rule: SUM | columns 5 and 6 | total: 6 | valid: 6 | removed: 0
+2026-10-16 16:43:03,248 | INFO | DEBUG rows added by cost-only rule: 1
+2026-10-16 16:43:03,248 | INFO | DEBUG added: Haley M. Lewis | pay 75.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 75.00
+2026-10-16 16:43:03,255 | INFO | Saved valid data to output\Meduit Group, LLC.xlsx
+2026-10-16 16:43:03,255 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:43:03,290 | INFO | First sheet formatted with 5 rows and 0 interest-only rows
+2026-10-16 16:43:03,301 | ERROR | FAILED: Meduit Group, LLC.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 181, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 146, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 16:43:03,301 | INFO | DEBUG client_name='NKC Health' | override found=True
+2026-10-16 16:43:03,301 | INFO | ----- Processing: NKC Health.xls -----
+2026-10-16 16:43:03,308 | INFO | Client share for 'NKC Health' = 25.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:43:03,312 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:03,326 | INFO | Reading file: input\NKC Health.xls
+2026-10-16 16:43:03,330 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:43:03,330 | INFO | Using sheet: Sheet1
+2026-10-16 16:43:03,340 | INFO | Totals row found at row 202, skipping it: [15441.02, 2114.4700000000003, 13582.720000000001, 2197.05, 0, 1775.72, 0, 2763.2200000000003, 10376.84, 5592.8]
+2026-10-16 16:43:03,344 | INFO | Totals row found at row 347, skipping it: [15441.02, 2114.4700000000003, 13582.720000000001, 2197.05, 0, 1775.72, 0, 2763.2200000000003, 10376.84, 5592.8]
+2026-10-16 16:43:03,345 | INFO | Totals row found at row 348, skipping it: [15441.02, 2114.4700000000003, 13582.720000000001, 2197.05, 0, 1775.72, 0, 2763.2200000000003, 10376.84, 5592.8]
+2026-10-16 16:43:03,348 | INFO | Debtor rows read: 71
+2026-10-16 16:43:03,348 | INFO | Column 5: expected 13582.72, got 13582.72 -> PASS
+2026-10-16 16:43:03,348 | INFO | Column 6: expected 2197.05, got 2197.05 -> PASS
+2026-10-16 16:43:03,348 | INFO | Rule: SUM | columns 5 and 6 | total: 71 | valid: 43 | removed: 28
+2026-10-16 16:43:03,348 | INFO | DEBUG rows added by cost-only rule: 1
+2026-10-16 16:43:03,348 | INFO | DEBUG added: Michael A. Freeman | pay 50.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 50.00
+2026-10-16 16:43:03,348 | INFO | DEBUG pay<=0: Katybeth M. Hall | pay 0.00 | prin 2114.47 | int 0.00 | costs 0.00
+2026-10-16 16:43:03,390 | INFO | Saved valid data to output\NKC Health.xlsx
+2026-10-16 16:43:03,390 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:43:03,459 | INFO | First sheet formatted with 38 rows and 0 interest-only rows
+2026-10-16 16:43:03,473 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 212
+2026-10-16 16:43:03,473 | INFO | Cost rows read: 53 | total: 2763.22
+2026-10-16 16:43:03,473 | INFO | Cost total: expected 2763.22, got 2763.22 -> PASS
+2026-10-16 16:43:03,555 | INFO | Sheet 'Cost' written with 53 rows
+2026-10-16 16:43:03,555 | INFO | Cost sheet added to output\NKC Health.xlsx
+2026-10-16 16:43:03,555 | INFO | Finished. Success: 6 | Failed: 4 ['Arista Recovery Operator at Paola, LLC.xls', 'Consumer Collection Management, Inc.- Probate.xls', 'FBKC Sports Tenant LLC dba HyVee Arena.xls', 'Meduit Group, LLC.xls']
+2026-10-16 16:43:03,555 | INFO | ===== Run finished =====
+2026-10-16 16:51:28,296 | INFO | ===== Temp1 run started =====
+2026-10-16 16:51:28,302 | ERROR | Temp1 run failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp1\src1\main_temp1.py", line 44, in run_temp1
+    files = get_input_files(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp1\src1\t1_reader.py", line 21, in get_input_files
+    raise FileNotFoundError(f"Temp1 input folder not found: {folder}")
+FileNotFoundError: Temp1 input folder not found: C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\Combined\Input
+2026-10-16 16:51:28,302 | INFO | Done: 0 | Failed: 0 
+2026-10-16 16:51:28,302 | INFO | ===== Temp1 run finished =====
+2026-10-16 16:51:28,313 | INFO | ===== Run started =====
+2026-10-16 16:51:28,318 | INFO | Input files found: 10 -> ['Arista Recovery Operator at Paola, LLC.xls', 'Consumer Collection Management, Inc. 2.xls', 'Consumer Collection Management, Inc.- Probate.xls', 'Consumer Collection Management, Inc..xls', 'Dentistry for Children.xls', 'Executive Financial Consultants 2.xls', 'Executive Financial Consultants.xls', 'FBKC Sports Tenant LLC dba HyVee Arena.xls', 'Meduit Group, LLC.xls', 'NKC Health.xls']
+2026-10-16 16:51:28,318 | INFO | DEBUG client_name='Arista Recovery Operator at Paola, LLC' | override found=False
+2026-10-16 16:51:28,318 | INFO | ----- Processing: Arista Recovery Operator at Paola, LLC.xls -----
+2026-10-16 16:51:28,330 | INFO | Client share for 'Arista Recovery Operator at Paola, LLC' = 33.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:28,336 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:28,342 | INFO | Reading file: input\Arista Recovery Operator at Paola, LLC.xls
+2026-10-16 16:51:28,345 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:28,345 | INFO | Using sheet: Sheet1
+2026-10-16 16:51:28,351 | INFO | Totals row found at row 42, skipping it: [1396.1100000000001, 0, 1396.1100000000001, 0, 0, 0, 0, 0, 1396.1100000000001, 460.71000000000004]
+2026-10-16 16:51:28,354 | INFO | Totals row found at row 96, skipping it: [1396.1100000000001, 0, 1396.1100000000001, 0, 0, 0, 0, 0, 1396.1100000000001, 460.71000000000004]
+2026-10-16 16:51:28,354 | INFO | Totals row found at row 97, skipping it: [1396.1100000000001, 0, 1396.1100000000001, 0, 0, 0, 0, 0, 1396.1100000000001, 460.71000000000004]
+2026-10-16 16:51:28,355 | INFO | Debtor rows read: 1
+2026-10-16 16:51:28,356 | INFO | Column 5: expected 1396.11, got 1396.11 -> PASS
+2026-10-16 16:51:28,356 | INFO | Column 6: expected 0.00, got 0.00 -> PASS
+2026-10-16 16:51:28,358 | INFO | Rule: SUM | columns 5 and 6 | total: 1 | valid: 1 | removed: 0
+2026-10-16 16:51:28,359 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 16:51:28,391 | INFO | Saved valid data to output\Arista Recovery Operator at Paola, LLC.xlsx
+2026-10-16 16:51:28,392 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:51:28,422 | INFO | First sheet formatted with 1 rows and 0 interest-only rows
+2026-10-16 16:51:28,459 | ERROR | FAILED: Arista Recovery Operator at Paola, LLC.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 214, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 179, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 16:51:28,463 | INFO | DEBUG client_name='Consumer Collection Management, Inc. 2' | override found=True
+2026-10-16 16:51:28,464 | INFO | ----- Processing: Consumer Collection Management, Inc. 2.xls -----
+2026-10-16 16:51:28,483 | INFO | Client share for 'Consumer Collection Management, Inc. 2' = 15.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:28,513 | INFO | Client share for 'Consumer Collection Management, Inc. 2' = 85.00% (column 'BWShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:28,524 | INFO | Client share for 'Consumer Collection Management, Inc. 2' = 100.00% (column 'BW Interest %', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:28,594 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:28,747 | INFO | Reading file: input\Consumer Collection Management, Inc. 2.xls
+2026-10-16 16:51:28,765 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:28,766 | INFO | Using sheet: Sheet1
+2026-10-16 16:51:28,806 | INFO | Totals row found at row 558, skipping it: [59097.99, 106.53, 49090.97, 6689.97, 1057.02, 2004.94, 0, 9659.09, 44513.340000000004, 14239.01]
+2026-10-16 16:51:28,827 | INFO | Totals row found at row 939, skipping it: [59097.99, 106.53, 49090.97, 6689.97, 1057.02, 2004.94, 0, 9659.09, 44513.340000000004, 14239.01]
+2026-10-16 16:51:28,829 | INFO | Totals row found at row 940, skipping it: [59097.99, 106.53, 49090.97, 6689.97, 1057.02, 2004.94, 0, 9659.09, 44513.340000000004, 14239.01]
+2026-10-16 16:51:28,836 | INFO | Debtor rows read: 246
+2026-10-16 16:51:28,838 | INFO | Column 5: expected 49090.97, got 49090.97 -> PASS
+2026-10-16 16:51:28,842 | INFO | Column 6: expected 6689.97, got 6689.97 -> PASS
+2026-10-16 16:51:28,848 | INFO | Rule: SUM | columns 5 and 6 | total: 246 | valid: 139 | removed: 107
+2026-10-16 16:51:28,867 | INFO | DEBUG rows added by cost-only rule: 4
+2026-10-16 16:51:28,870 | INFO | DEBUG added: Curtis M Moke | pay 200.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 200.00
+2026-10-16 16:51:28,870 | INFO | DEBUG added: Jonathan P. Palmer | pay 83.69 | prin 0.00 | int 0.00 | fees 0.00 | costs 83.69
+2026-10-16 16:51:28,870 | INFO | DEBUG added: Angela Sanders | pay 2.05 | prin 0.00 | int 0.00 | fees 0.00 | costs 2.05
+2026-10-16 16:51:28,873 | INFO | DEBUG added: Marissa K. Stephens | pay 24.22 | prin 0.00 | int 0.00 | fees 0.00 | costs 24.22
+2026-10-16 16:51:28,873 | INFO | DEBUG pay<=0: Robin L. Schmidt | pay 0.00 | prin 106.53 | int 0.00 | costs 0.00
+2026-10-16 16:51:28,968 | INFO | Saved valid data to output\Consumer Collection Management, Inc. 2.xlsx
+2026-10-16 16:51:28,968 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=False | total_from_components=True | applied_formula=True
+2026-10-16 16:51:29,108 | INFO | First sheet formatted with 119 rows and 19 interest-only rows
+2026-10-16 16:51:29,182 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 568
+2026-10-16 16:51:29,259 | INFO | Cost rows read: 179 | total: 9659.09
+2026-10-16 16:51:29,260 | INFO | Cost total: expected 9659.09, got 9659.09 -> PASS
+2026-10-16 16:51:29,538 | INFO | Sheet 'Cost' written with 179 rows
+2026-10-16 16:51:29,538 | INFO | Cost sheet added to output\Consumer Collection Management, Inc. 2.xlsx
+2026-10-16 16:51:29,538 | INFO | DEBUG client_name='Consumer Collection Management, Inc.- Probate' | override found=False
+2026-10-16 16:51:29,538 | INFO | ----- Processing: Consumer Collection Management, Inc.- Probate.xls -----
+2026-10-16 16:51:29,551 | INFO | Client share for 'Consumer Collection Management, Inc.- Probate' = 18.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:29,555 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:29,559 | INFO | Reading file: input\Consumer Collection Management, Inc.- Probate.xls
+2026-10-16 16:51:29,566 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:29,567 | INFO | Using sheet: Sheet1
+2026-10-16 16:51:29,570 | INFO | Totals row found at row 55, skipping it: [400, 35, 435, 0, 0, 0, 0, 0, 328, 78.3]
+2026-10-16 16:51:29,572 | INFO | Totals row found at row 94, skipping it: [400, 35, 435, 0, 0, 0, 0, 0, 328, 78.3]
+2026-10-16 16:51:29,572 | INFO | Totals row found at row 95, skipping it: [400, 35, 435, 0, 0, 0, 0, 0, 328, 78.3]
+2026-10-16 16:51:29,573 | INFO | Debtor rows read: 2
+2026-10-16 16:51:29,573 | INFO | Column 5: expected 435.00, got 435.00 -> PASS
+2026-10-16 16:51:29,573 | INFO | Column 6: expected 0.00, got 0.00 -> PASS
+2026-10-16 16:51:29,575 | INFO | Rule: SUM | columns 5 and 6 | total: 2 | valid: 2 | removed: 0
+2026-10-16 16:51:29,576 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 16:51:29,576 | INFO | DEBUG pay<=0: Mary Beth Nelson | pay 0.00 | prin 35.00 | int 0.00 | costs 0.00
+2026-10-16 16:51:29,589 | INFO | Saved valid data to output\Consumer Collection Management, Inc.- Probate.xlsx
+2026-10-16 16:51:29,589 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:51:29,632 | INFO | First sheet formatted with 1 rows and 0 interest-only rows
+2026-10-16 16:51:29,648 | ERROR | FAILED: Consumer Collection Management, Inc.- Probate.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 214, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 179, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 16:51:29,648 | INFO | DEBUG client_name='Consumer Collection Management, Inc.' | override found=True
+2026-10-16 16:51:29,648 | INFO | ----- Processing: Consumer Collection Management, Inc..xls -----
+2026-10-16 16:51:29,659 | INFO | Client share for 'Consumer Collection Management, Inc.' = 18.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:29,667 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:29,689 | INFO | Reading file: input\Consumer Collection Management, Inc..xls
+2026-10-16 16:51:29,701 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:29,702 | INFO | Using sheet: Sheet1
+2026-10-16 16:51:29,719 | INFO | Totals row found at row 364, skipping it: [35011.98, 752.73, 28232.03, 3560, 309.63, 2827.92, 0, 2466.37, 25614.89, 8697.45]
+2026-10-16 16:51:29,723 | INFO | Totals row found at row 646, skipping it: [35011.98, 752.73, 28232.03, 3560, 309.63, 2827.92, 0, 2466.37, 25614.89, 8697.45]
+2026-10-16 16:51:29,723 | INFO | Totals row found at row 647, skipping it: [35011.98, 752.73, 28232.03, 3560, 309.63, 2827.92, 0, 2466.37, 25614.89, 8697.45]
+2026-10-16 16:51:29,728 | INFO | Debtor rows read: 149
+2026-10-16 16:51:29,729 | INFO | Column 5: expected 28232.03, got 28232.03 -> PASS
+2026-10-16 16:51:29,729 | INFO | Column 6: expected 3560.00, got 3560.00 -> PASS
+2026-10-16 16:51:29,733 | INFO | Rule: SUM | columns 5 and 6 | total: 149 | valid: 104 | removed: 45
+2026-10-16 16:51:29,736 | INFO | DEBUG rows added by cost-only rule: 6
+2026-10-16 16:51:29,737 | INFO | DEBUG added: Michelle M. Belt | pay 97.13 | prin 0.00 | int 0.00 | fees 0.00 | costs 97.13
+2026-10-16 16:51:29,737 | INFO | DEBUG added: James R. Connell | pay 50.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 50.00
+2026-10-16 16:51:29,737 | INFO | DEBUG added: Lucinda L. Cooksey | pay 128.80 | prin 0.00 | int 0.00 | fees 0.00 | costs 128.80
+2026-10-16 16:51:29,737 | INFO | DEBUG added: Dana N. De Lossantos Bravo | pay 46.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 46.00
+2026-10-16 16:51:29,738 | INFO | DEBUG added: Samantha Gibson | pay 200.00 | prin 0.00 | int 0.00 | fees 46.00 | costs 154.00
+2026-10-16 16:51:29,739 | INFO | DEBUG added: Autumn Rose Hernandez | pay 0.11 | prin 0.00 | int 0.00 | fees 0.00 | costs 0.11
+2026-10-16 16:51:29,739 | INFO | DEBUG pay<=0: Cheyane F. Brown | pay 0.00 | prin 15.00 | int 0.00 | costs 0.00
+2026-10-16 16:51:29,739 | INFO | DEBUG pay<=0: Nicole Crawford-Ducey | pay 0.00 | prin 712.73 | int 0.00 | costs 0.00
+2026-10-16 16:51:29,771 | INFO | Saved valid data to output\Consumer Collection Management, Inc..xlsx
+2026-10-16 16:51:29,771 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=True | applied_from_payment=False | total_from_components=True | applied_formula=True
+2026-10-16 16:51:29,847 | INFO | First sheet formatted with 102 rows and 0 interest-only rows
+2026-10-16 16:51:29,869 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 374
+2026-10-16 16:51:29,871 | INFO | Cost rows read: 54 | total: 2466.37
+2026-10-16 16:51:29,871 | INFO | Cost total: expected 2466.37, got 2466.37 -> PASS
+2026-10-16 16:51:29,947 | INFO | Sheet 'Cost' written with 54 rows
+2026-10-16 16:51:29,947 | INFO | Cost sheet added to output\Consumer Collection Management, Inc..xlsx
+2026-10-16 16:51:29,947 | INFO | DEBUG client_name='Dentistry for Children' | override found=True
+2026-10-16 16:51:29,947 | INFO | ----- Processing: Dentistry for Children.xls -----
+2026-10-16 16:51:29,947 | INFO | Client share for 'Dentistry for Children' = 30.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:29,965 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:29,971 | INFO | Reading file: input\Dentistry for Children.xls
+2026-10-16 16:51:29,974 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:29,974 | INFO | Using sheet: Sheet1
+2026-10-16 16:51:29,977 | INFO | Totals row found at row 60, skipping it: [2919.58, 463.42, 2421.2000000000003, 80.92, 76.88, 804, 0, 403.75, 2919.58, 726.36]
+2026-10-16 16:51:29,983 | INFO | Totals row found at row 136, skipping it: [2919.58, 463.42, 2421.2000000000003, 80.92, 76.88, 804, 0, 403.75, 2919.58, 726.36]
+2026-10-16 16:51:29,983 | INFO | Totals row found at row 137, skipping it: [2919.58, 463.42, 2421.2000000000003, 80.92, 76.88, 804, 0, 403.75, 2919.58, 726.36]
+2026-10-16 16:51:29,985 | INFO | Debtor rows read: 10
+2026-10-16 16:51:29,986 | INFO | Column 5: expected 2421.20, got 2421.20 -> PASS
+2026-10-16 16:51:29,986 | INFO | Column 6: expected 80.92, got 80.92 -> PASS
+2026-10-16 16:51:29,987 | INFO | Rule: SUM | columns 5 and 6 | total: 10 | valid: 6 | removed: 4
+2026-10-16 16:51:29,987 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 16:51:29,988 | INFO | DEBUG pay<=0: Lindsey E. Biggers | pay 0.00 | prin 302.50 | int 4.54 | costs 111.00
+2026-10-16 16:51:30,000 | INFO | Saved valid data to output\Dentistry for Children.xlsx
+2026-10-16 16:51:30,000 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:51:30,026 | INFO | First sheet formatted with 5 rows and 0 interest-only rows
+2026-10-16 16:51:30,034 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 70
+2026-10-16 16:51:30,035 | WARNING | No plaintiff found for claim 3404259.001
+2026-10-16 16:51:30,036 | WARNING | No plaintiff found for claim 3404259.001
+2026-10-16 16:51:30,036 | WARNING | No plaintiff found for claim 3404248.001
+2026-10-16 16:51:30,036 | WARNING | No plaintiff found for claim 3404482.001
+2026-10-16 16:51:30,036 | WARNING | No plaintiff found for claim 3406887.001
+2026-10-16 16:51:30,037 | WARNING | No plaintiff found for claim 3406887.001
+2026-10-16 16:51:30,037 | INFO | Cost rows read: 6 | total: 403.75
+2026-10-16 16:51:30,038 | INFO | Cost total: expected 403.75, got 403.75 -> PASS
+2026-10-16 16:51:30,081 | INFO | Sheet 'Cost' written with 6 rows
+2026-10-16 16:51:30,081 | INFO | Cost sheet added to output\Dentistry for Children.xlsx
+2026-10-16 16:51:30,081 | INFO | DEBUG client_name='Executive Financial Consultants 2' | override found=False
+2026-10-16 16:51:30,081 | INFO | ----- Processing: Executive Financial Consultants 2.xls -----
+2026-10-16 16:51:30,081 | INFO | Client share for 'Executive Financial Consultants 2' = 12.50% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:30,094 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:30,104 | INFO | Reading file: input\Executive Financial Consultants 2.xls
+2026-10-16 16:51:30,107 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:30,108 | INFO | Using sheet: Sheet1
+2026-10-16 16:51:30,118 | INFO | Totals row found at row 127, skipping it: [11295.99, 0, 7375.45, 2893.54, 0, 1027, 0, 2260, 11295.99, 3842.4700000000003]
+2026-10-16 16:51:30,122 | INFO | Totals row found at row 286, skipping it: [11295.99, 0, 7375.45, 2893.54, 0, 1027, 0, 2260, 11295.99, 3842.4700000000003]
+2026-10-16 16:51:30,122 | INFO | Totals row found at row 287, skipping it: [11295.99, 0, 7375.45, 2893.54, 0, 1027, 0, 2260, 11295.99, 3842.4700000000003]
+2026-10-16 16:51:30,123 | INFO | Debtor rows read: 38
+2026-10-16 16:51:30,123 | INFO | Column 5: expected 7375.45, got 7375.45 -> PASS
+2026-10-16 16:51:30,123 | INFO | Column 6: expected 2893.54, got 2893.54 -> PASS
+2026-10-16 16:51:30,125 | INFO | Rule: SUM | columns 5 and 6 | total: 38 | valid: 14 | removed: 24
+2026-10-16 16:51:30,126 | INFO | DEBUG rows added by cost-only rule: 2
+2026-10-16 16:51:30,126 | INFO | DEBUG added: Eric D. Martin | pay 100.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 100.00
+2026-10-16 16:51:30,126 | INFO | DEBUG added: Dalton Webb | pay 100.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 100.00
+2026-10-16 16:51:30,177 | INFO | Saved valid data to output\Executive Financial Consultants 2.xlsx
+2026-10-16 16:51:30,177 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:51:30,214 | INFO | First sheet formatted with 11 rows and 0 interest-only rows
+2026-10-16 16:51:30,218 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 137
+2026-10-16 16:51:30,226 | INFO | Cost rows read: 42 | total: 2260.00
+2026-10-16 16:51:30,227 | INFO | Cost total: expected 2260.00, got 2260.00 -> PASS
+2026-10-16 16:51:30,284 | INFO | Sheet 'Cost' written with 42 rows
+2026-10-16 16:51:30,284 | INFO | Cost sheet added to output\Executive Financial Consultants 2.xlsx
+2026-10-16 16:51:30,284 | INFO | DEBUG client_name='Executive Financial Consultants' | override found=True
+2026-10-16 16:51:30,284 | INFO | ----- Processing: Executive Financial Consultants.xls -----
+2026-10-16 16:51:30,303 | INFO | Client share for 'Executive Financial Consultants' = 18.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:30,309 | INFO | Client share for 'Executive Financial Consultants' = 82.00% (column 'BWShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:30,320 | INFO | Client share for 'Executive Financial Consultants' = 100.00% (column 'BW Interest %', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:30,331 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:30,352 | INFO | Reading file: input\Executive Financial Consultants.xls
+2026-10-16 16:51:30,355 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:30,355 | INFO | Using sheet: Sheet1
+2026-10-16 16:51:30,365 | INFO | Totals row found at row 76, skipping it: [674.33, 0, 375, 285.41, 0, 0, 0, 183, 660.41, 339.17]
+2026-10-16 16:51:30,381 | INFO | Totals row found at row 621, skipping it: [674.33, 0, 375, 285.41, 0, 0, 0, 183, 660.41, 339.17]
+2026-10-16 16:51:30,382 | INFO | Totals row found at row 622, skipping it: [674.33, 0, 375, 285.41, 0, 0, 0, 183, 660.41, 339.17]
+2026-10-16 16:51:30,382 | INFO | Debtor rows read: 11
+2026-10-16 16:51:30,383 | INFO | Column 5: expected 375.00, got 375.00 -> PASS
+2026-10-16 16:51:30,383 | INFO | Column 6: expected 285.41, got 285.41 -> PASS
+2026-10-16 16:51:30,384 | INFO | Rule: SUM | columns 5 and 6 | total: 11 | valid: 8 | removed: 3
+2026-10-16 16:51:30,384 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 16:51:30,394 | INFO | Saved valid data to output\Executive Financial Consultants.xlsx
+2026-10-16 16:51:30,395 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=False | total_from_components=True | applied_formula=True
+2026-10-16 16:51:30,433 | INFO | First sheet formatted with 5 rows and 3 interest-only rows
+2026-10-16 16:51:30,451 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 86
+2026-10-16 16:51:30,451 | INFO | Cost rows read: 5 | total: 183.00
+2026-10-16 16:51:30,451 | INFO | Cost total: expected 183.00, got 183.00 -> PASS
+2026-10-16 16:51:30,482 | INFO | Sheet 'Cost' written with 5 rows
+2026-10-16 16:51:30,482 | INFO | Cost sheet added to output\Executive Financial Consultants.xlsx
+2026-10-16 16:51:30,482 | INFO | DEBUG client_name='FBKC Sports Tenant LLC dba HyVee Arena' | override found=False
+2026-10-16 16:51:30,482 | INFO | ----- Processing: FBKC Sports Tenant LLC dba HyVee Arena.xls -----
+2026-10-16 16:51:30,496 | INFO | Client share for 'FBKC Sports Tenant LLC dba HyVee Arena' = 33.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:30,501 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:30,505 | INFO | Reading file: input\FBKC Sports Tenant LLC dba HyVee Arena.xls
+2026-10-16 16:51:30,506 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:30,506 | INFO | Using sheet: Sheet1
+2026-10-16 16:51:30,509 | INFO | Totals row found at row 45, skipping it: [1000, 0, 0, 0, 234.72, 359.15000000000003, 406.13, 0, 788.52, 211.48000000000002]
+2026-10-16 16:51:30,510 | INFO | Totals row found at row 74, skipping it: [1000, 0, 0, 0, 234.72, 359.15000000000003, 406.13, 0, 788.52, 211.48000000000002]
+2026-10-16 16:51:30,510 | INFO | Totals row found at row 75, skipping it: [1000, 0, 0, 0, 234.72, 359.15000000000003, 406.13, 0, 788.52, 211.48000000000002]
+2026-10-16 16:51:30,511 | INFO | Debtor rows read: 1
+2026-10-16 16:51:30,513 | INFO | Column 5: expected 0.00, got 0.00 -> PASS
+2026-10-16 16:51:30,513 | INFO | Column 6: expected 0.00, got 0.00 -> PASS
+2026-10-16 16:51:30,513 | INFO | Rule: SUM | columns 5 and 6 | total: 1 | valid: 1 | removed: 0
+2026-10-16 16:51:30,513 | INFO | DEBUG rows added by cost-only rule: 1
+2026-10-16 16:51:30,513 | INFO | DEBUG added: JustUs System Inc. | pay 1000.00 | prin 0.00 | int 0.00 | fees 234.72 | costs 359.15
+2026-10-16 16:51:30,524 | INFO | Saved valid data to output\FBKC Sports Tenant LLC dba HyVee Arena.xlsx
+2026-10-16 16:51:30,524 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:51:30,556 | INFO | First sheet formatted with 1 rows and 0 interest-only rows
+2026-10-16 16:51:30,563 | ERROR | FAILED: FBKC Sports Tenant LLC dba HyVee Arena.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 214, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 179, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 16:51:30,563 | INFO | DEBUG client_name='Meduit Group, LLC' | override found=False
+2026-10-16 16:51:30,563 | INFO | ----- Processing: Meduit Group, LLC.xls -----
+2026-10-16 16:51:30,574 | INFO | Client share for 'Meduit Group, LLC' = 12.50% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:30,577 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:30,581 | INFO | Reading file: input\Meduit Group, LLC.xls
+2026-10-16 16:51:30,588 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:30,588 | INFO | Using sheet: Sheet1
+2026-10-16 16:51:30,591 | INFO | Totals row found at row 54, skipping it: [1449.08, 0, 1274.08, 100, 0, 75, 0, 0, 1449.08, 259.28000000000003]
+2026-10-16 16:51:30,592 | INFO | Totals row found at row 133, skipping it: [1449.08, 0, 1274.08, 100, 0, 75, 0, 0, 1449.08, 259.28000000000003]
+2026-10-16 16:51:30,592 | INFO | Totals row found at row 134, skipping it: [1449.08, 0, 1274.08, 100, 0, 75, 0, 0, 1449.08, 259.28000000000003]
+2026-10-16 16:51:30,594 | INFO | Debtor rows read: 6
+2026-10-16 16:51:30,594 | INFO | Column 5: expected 1274.08, got 1274.08 -> PASS
+2026-10-16 16:51:30,594 | INFO | Column 6: expected 100.00, got 100.00 -> PASS
+2026-10-16 16:51:30,596 | INFO | Rule: SUM | columns 5 and 6 | total: 6 | valid: 6 | removed: 0
+2026-10-16 16:51:30,596 | INFO | DEBUG rows added by cost-only rule: 1
+2026-10-16 16:51:30,598 | INFO | DEBUG added: Haley M. Lewis | pay 75.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 75.00
+2026-10-16 16:51:30,607 | INFO | Saved valid data to output\Meduit Group, LLC.xlsx
+2026-10-16 16:51:30,607 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:51:30,636 | INFO | First sheet formatted with 5 rows and 0 interest-only rows
+2026-10-16 16:51:30,650 | ERROR | FAILED: Meduit Group, LLC.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 214, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 179, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 16:51:30,651 | INFO | DEBUG client_name='NKC Health' | override found=True
+2026-10-16 16:51:30,651 | INFO | ----- Processing: NKC Health.xls -----
+2026-10-16 16:51:30,654 | INFO | Client share for 'NKC Health' = 25.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 16:51:30,661 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:30,672 | INFO | Reading file: input\NKC Health.xls
+2026-10-16 16:51:30,677 | INFO | Sheets found: ['Sheet1']
+2026-10-16 16:51:30,677 | INFO | Using sheet: Sheet1
+2026-10-16 16:51:30,688 | INFO | Totals row found at row 202, skipping it: [15441.02, 2114.4700000000003, 13582.720000000001, 2197.05, 0, 1775.72, 0, 2763.2200000000003, 10376.84, 5592.8]
+2026-10-16 16:51:30,692 | INFO | Totals row found at row 347, skipping it: [15441.02, 2114.4700000000003, 13582.720000000001, 2197.05, 0, 1775.72, 0, 2763.2200000000003, 10376.84, 5592.8]
+2026-10-16 16:51:30,692 | INFO | Totals row found at row 348, skipping it: [15441.02, 2114.4700000000003, 13582.720000000001, 2197.05, 0, 1775.72, 0, 2763.2200000000003, 10376.84, 5592.8]
+2026-10-16 16:51:30,693 | INFO | Debtor rows read: 71
+2026-10-16 16:51:30,694 | INFO | Column 5: expected 13582.72, got 13582.72 -> PASS
+2026-10-16 16:51:30,694 | INFO | Column 6: expected 2197.05, got 2197.05 -> PASS
+2026-10-16 16:51:30,695 | INFO | Rule: SUM | columns 5 and 6 | total: 71 | valid: 43 | removed: 28
+2026-10-16 16:51:30,701 | INFO | DEBUG rows added by cost-only rule: 1
+2026-10-16 16:51:30,701 | INFO | DEBUG added: Michael A. Freeman | pay 50.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 50.00
+2026-10-16 16:51:30,702 | INFO | DEBUG pay<=0: Katybeth M. Hall | pay 0.00 | prin 2114.47 | int 0.00 | costs 0.00
+2026-10-16 16:51:30,729 | INFO | Saved valid data to output\NKC Health.xlsx
+2026-10-16 16:51:30,729 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 16:51:30,781 | INFO | First sheet formatted with 38 rows and 0 interest-only rows
+2026-10-16 16:51:30,802 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 212
+2026-10-16 16:51:30,802 | INFO | Cost rows read: 53 | total: 2763.22
+2026-10-16 16:51:30,802 | INFO | Cost total: expected 2763.22, got 2763.22 -> PASS
+2026-10-16 16:51:30,867 | INFO | Sheet 'Cost' written with 53 rows
+2026-10-16 16:51:30,868 | INFO | Cost sheet added to output\NKC Health.xlsx
+2026-10-16 16:51:30,868 | INFO | Finished. Success: 6 | Failed: 4 ['Arista Recovery Operator at Paola, LLC.xls', 'Consumer Collection Management, Inc.- Probate.xls', 'FBKC Sports Tenant LLC dba HyVee Arena.xls', 'Meduit Group, LLC.xls']
+2026-10-16 16:51:30,869 | INFO | ===== Run finished =====
+2026-10-16 17:29:51,206 | INFO | ===== Temp1 run started =====
+2026-10-16 17:29:51,208 | ERROR | Temp1 run failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp1\src1\main_temp1.py", line 44, in run_temp1
+    files = get_input_files(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp1\src1\t1_reader.py", line 21, in get_input_files
+    raise FileNotFoundError(f"Temp1 input folder not found: {folder}")
+FileNotFoundError: Temp1 input folder not found: C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\Combined\Input
+2026-10-16 17:29:51,212 | INFO | Done: 0 | Failed: 0 
+2026-10-16 17:29:51,212 | INFO | ===== Temp1 run finished =====
+2026-10-16 17:29:51,243 | INFO | ===== Run started =====
+2026-10-16 17:29:51,259 | INFO | Input files found: 10 -> ['Arista Recovery Operator at Paola, LLC.xls', 'Consumer Collection Management, Inc. 2.xls', 'Consumer Collection Management, Inc.- Probate.xls', 'Consumer Collection Management, Inc..xls', 'Dentistry for Children.xls', 'Executive Financial Consultants 2.xls', 'Executive Financial Consultants.xls', 'FBKC Sports Tenant LLC dba HyVee Arena.xls', 'Meduit Group, LLC.xls', 'NKC Health.xls']
+2026-10-16 17:29:51,259 | INFO | DEBUG client_name='Arista Recovery Operator at Paola, LLC' | override found=False
+2026-10-16 17:29:51,259 | INFO | ----- Processing: Arista Recovery Operator at Paola, LLC.xls -----
+2026-10-16 17:29:51,287 | INFO | Client share for 'Arista Recovery Operator at Paola, LLC' = 33.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:51,299 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:51,314 | INFO | Reading file: input\Arista Recovery Operator at Paola, LLC.xls
+2026-10-16 17:29:51,322 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:51,323 | INFO | Using sheet: Sheet1
+2026-10-16 17:29:51,330 | INFO | Totals row found at row 42, skipping it: [1396.1100000000001, 0, 1396.1100000000001, 0, 0, 0, 0, 0, 1396.1100000000001, 460.71000000000004]
+2026-10-16 17:29:51,336 | INFO | Totals row found at row 96, skipping it: [1396.1100000000001, 0, 1396.1100000000001, 0, 0, 0, 0, 0, 1396.1100000000001, 460.71000000000004]
+2026-10-16 17:29:51,337 | INFO | Totals row found at row 97, skipping it: [1396.1100000000001, 0, 1396.1100000000001, 0, 0, 0, 0, 0, 1396.1100000000001, 460.71000000000004]
+2026-10-16 17:29:51,339 | INFO | Debtor rows read: 1
+2026-10-16 17:29:51,342 | INFO | Column 5: expected 1396.11, got 1396.11 -> PASS
+2026-10-16 17:29:51,342 | INFO | Column 6: expected 0.00, got 0.00 -> PASS
+2026-10-16 17:29:51,345 | INFO | Rule: SUM | columns 5 and 6 | total: 1 | valid: 1 | removed: 0
+2026-10-16 17:29:51,348 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 17:29:51,352 | INFO | Copied Temp2 output template from C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx to output\Arista Recovery Operator at Paola, LLC.xlsx
+2026-10-16 17:29:51,353 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 17:29:51,646 | INFO | Template payment sheet formatted with 1 rows and 0 interest-only rows
+2026-10-16 17:29:51,646 | ERROR | FAILED: Arista Recovery Operator at Paola, LLC.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 219, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 184, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 17:29:51,646 | INFO | DEBUG client_name='Consumer Collection Management, Inc. 2' | override found=True
+2026-10-16 17:29:51,646 | INFO | ----- Processing: Consumer Collection Management, Inc. 2.xls -----
+2026-10-16 17:29:51,665 | INFO | Client share for 'Consumer Collection Management, Inc. 2' = 15.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:51,675 | INFO | Client share for 'Consumer Collection Management, Inc. 2' = 85.00% (column 'BWShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:51,694 | INFO | Client share for 'Consumer Collection Management, Inc. 2' = 100.00% (column 'BW Interest %', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:51,716 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:51,755 | INFO | Reading file: input\Consumer Collection Management, Inc. 2.xls
+2026-10-16 17:29:51,773 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:51,773 | INFO | Using sheet: Sheet1
+2026-10-16 17:29:51,806 | INFO | Totals row found at row 558, skipping it: [59097.99, 106.53, 49090.97, 6689.97, 1057.02, 2004.94, 0, 9659.09, 44513.340000000004, 14239.01]
+2026-10-16 17:29:51,806 | INFO | Totals row found at row 939, skipping it: [59097.99, 106.53, 49090.97, 6689.97, 1057.02, 2004.94, 0, 9659.09, 44513.340000000004, 14239.01]
+2026-10-16 17:29:51,806 | INFO | Totals row found at row 940, skipping it: [59097.99, 106.53, 49090.97, 6689.97, 1057.02, 2004.94, 0, 9659.09, 44513.340000000004, 14239.01]
+2026-10-16 17:29:51,821 | INFO | Debtor rows read: 246
+2026-10-16 17:29:51,821 | INFO | Column 5: expected 49090.97, got 49090.97 -> PASS
+2026-10-16 17:29:51,822 | INFO | Column 6: expected 6689.97, got 6689.97 -> PASS
+2026-10-16 17:29:51,824 | INFO | Rule: SUM | columns 5 and 6 | total: 246 | valid: 139 | removed: 107
+2026-10-16 17:29:51,829 | INFO | DEBUG rows added by cost-only rule: 4
+2026-10-16 17:29:51,829 | INFO | DEBUG added: Curtis M Moke | pay 200.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 200.00
+2026-10-16 17:29:51,829 | INFO | DEBUG added: Jonathan P. Palmer | pay 83.69 | prin 0.00 | int 0.00 | fees 0.00 | costs 83.69
+2026-10-16 17:29:51,829 | INFO | DEBUG added: Angela Sanders | pay 2.05 | prin 0.00 | int 0.00 | fees 0.00 | costs 2.05
+2026-10-16 17:29:51,829 | INFO | DEBUG added: Marissa K. Stephens | pay 24.22 | prin 0.00 | int 0.00 | fees 0.00 | costs 24.22
+2026-10-16 17:29:51,829 | INFO | DEBUG pay<=0: Robin L. Schmidt | pay 0.00 | prin 106.53 | int 0.00 | costs 0.00
+2026-10-16 17:29:51,834 | INFO | Copied Temp2 output template from C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx to output\Consumer Collection Management, Inc. 2.xlsx
+2026-10-16 17:29:51,834 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=False | total_from_components=True | applied_formula=True
+2026-10-16 17:29:51,982 | INFO | Template payment sheet formatted with 119 rows and 19 interest-only rows
+2026-10-16 17:29:52,007 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 568
+2026-10-16 17:29:52,021 | INFO | Cost rows read: 179 | total: 9659.09
+2026-10-16 17:29:52,022 | INFO | Cost total: expected 9659.09, got 9659.09 -> PASS
+2026-10-16 17:29:52,183 | INFO | Sheet 'Cost' written with 179 rows
+2026-10-16 17:29:52,183 | INFO | Cost sheet added to output\Consumer Collection Management, Inc. 2.xlsx
+2026-10-16 17:29:52,183 | INFO | DEBUG client_name='Consumer Collection Management, Inc.- Probate' | override found=False
+2026-10-16 17:29:52,183 | INFO | ----- Processing: Consumer Collection Management, Inc.- Probate.xls -----
+2026-10-16 17:29:52,183 | INFO | Client share for 'Consumer Collection Management, Inc.- Probate' = 18.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:52,200 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:52,203 | INFO | Reading file: input\Consumer Collection Management, Inc.- Probate.xls
+2026-10-16 17:29:52,207 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:52,209 | INFO | Using sheet: Sheet1
+2026-10-16 17:29:52,211 | INFO | Totals row found at row 55, skipping it: [400, 35, 435, 0, 0, 0, 0, 0, 328, 78.3]
+2026-10-16 17:29:52,212 | INFO | Totals row found at row 94, skipping it: [400, 35, 435, 0, 0, 0, 0, 0, 328, 78.3]
+2026-10-16 17:29:52,212 | INFO | Totals row found at row 95, skipping it: [400, 35, 435, 0, 0, 0, 0, 0, 328, 78.3]
+2026-10-16 17:29:52,213 | INFO | Debtor rows read: 2
+2026-10-16 17:29:52,213 | INFO | Column 5: expected 435.00, got 435.00 -> PASS
+2026-10-16 17:29:52,213 | INFO | Column 6: expected 0.00, got 0.00 -> PASS
+2026-10-16 17:29:52,215 | INFO | Rule: SUM | columns 5 and 6 | total: 2 | valid: 2 | removed: 0
+2026-10-16 17:29:52,215 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 17:29:52,216 | INFO | DEBUG pay<=0: Mary Beth Nelson | pay 0.00 | prin 35.00 | int 0.00 | costs 0.00
+2026-10-16 17:29:52,218 | INFO | Copied Temp2 output template from C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx to output\Consumer Collection Management, Inc.- Probate.xlsx
+2026-10-16 17:29:52,218 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 17:29:52,373 | INFO | Template payment sheet formatted with 1 rows and 0 interest-only rows
+2026-10-16 17:29:52,387 | ERROR | FAILED: Consumer Collection Management, Inc.- Probate.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 219, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 184, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 17:29:52,388 | INFO | DEBUG client_name='Consumer Collection Management, Inc.' | override found=True
+2026-10-16 17:29:52,388 | INFO | ----- Processing: Consumer Collection Management, Inc..xls -----
+2026-10-16 17:29:52,396 | INFO | Client share for 'Consumer Collection Management, Inc.' = 18.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:52,403 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:52,427 | INFO | Reading file: input\Consumer Collection Management, Inc..xls
+2026-10-16 17:29:52,433 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:52,433 | INFO | Using sheet: Sheet1
+2026-10-16 17:29:52,450 | INFO | Totals row found at row 364, skipping it: [35011.98, 752.73, 28232.03, 3560, 309.63, 2827.92, 0, 2466.37, 25614.89, 8697.45]
+2026-10-16 17:29:52,459 | INFO | Totals row found at row 646, skipping it: [35011.98, 752.73, 28232.03, 3560, 309.63, 2827.92, 0, 2466.37, 25614.89, 8697.45]
+2026-10-16 17:29:52,459 | INFO | Totals row found at row 647, skipping it: [35011.98, 752.73, 28232.03, 3560, 309.63, 2827.92, 0, 2466.37, 25614.89, 8697.45]
+2026-10-16 17:29:52,459 | INFO | Debtor rows read: 149
+2026-10-16 17:29:52,462 | INFO | Column 5: expected 28232.03, got 28232.03 -> PASS
+2026-10-16 17:29:52,462 | INFO | Column 6: expected 3560.00, got 3560.00 -> PASS
+2026-10-16 17:29:52,462 | INFO | Rule: SUM | columns 5 and 6 | total: 149 | valid: 104 | removed: 45
+2026-10-16 17:29:52,464 | INFO | DEBUG rows added by cost-only rule: 6
+2026-10-16 17:29:52,466 | INFO | DEBUG added: Michelle M. Belt | pay 97.13 | prin 0.00 | int 0.00 | fees 0.00 | costs 97.13
+2026-10-16 17:29:52,466 | INFO | DEBUG added: James R. Connell | pay 50.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 50.00
+2026-10-16 17:29:52,466 | INFO | DEBUG added: Lucinda L. Cooksey | pay 128.80 | prin 0.00 | int 0.00 | fees 0.00 | costs 128.80
+2026-10-16 17:29:52,466 | INFO | DEBUG added: Dana N. De Lossantos Bravo | pay 46.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 46.00
+2026-10-16 17:29:52,466 | INFO | DEBUG added: Samantha Gibson | pay 200.00 | prin 0.00 | int 0.00 | fees 46.00 | costs 154.00
+2026-10-16 17:29:52,466 | INFO | DEBUG added: Autumn Rose Hernandez | pay 0.11 | prin 0.00 | int 0.00 | fees 0.00 | costs 0.11
+2026-10-16 17:29:52,466 | INFO | DEBUG pay<=0: Cheyane F. Brown | pay 0.00 | prin 15.00 | int 0.00 | costs 0.00
+2026-10-16 17:29:52,466 | INFO | DEBUG pay<=0: Nicole Crawford-Ducey | pay 0.00 | prin 712.73 | int 0.00 | costs 0.00
+2026-10-16 17:29:52,470 | INFO | Copied Temp2 output template from C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx to output\Consumer Collection Management, Inc..xlsx
+2026-10-16 17:29:52,472 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=True | applied_from_payment=False | total_from_components=True | applied_formula=True
+2026-10-16 17:29:52,666 | INFO | Template payment sheet formatted with 102 rows and 0 interest-only rows
+2026-10-16 17:29:52,688 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 374
+2026-10-16 17:29:52,688 | INFO | Cost rows read: 54 | total: 2466.37
+2026-10-16 17:29:52,688 | INFO | Cost total: expected 2466.37, got 2466.37 -> PASS
+2026-10-16 17:29:52,834 | INFO | Sheet 'Cost' written with 54 rows
+2026-10-16 17:29:52,834 | INFO | Cost sheet added to output\Consumer Collection Management, Inc..xlsx
+2026-10-16 17:29:52,834 | INFO | DEBUG client_name='Dentistry for Children' | override found=True
+2026-10-16 17:29:52,834 | INFO | ----- Processing: Dentistry for Children.xls -----
+2026-10-16 17:29:52,850 | INFO | Client share for 'Dentistry for Children' = 30.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:52,856 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:52,857 | INFO | Reading file: input\Dentistry for Children.xls
+2026-10-16 17:29:52,863 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:52,864 | INFO | Using sheet: Sheet1
+2026-10-16 17:29:52,867 | INFO | Totals row found at row 60, skipping it: [2919.58, 463.42, 2421.2000000000003, 80.92, 76.88, 804, 0, 403.75, 2919.58, 726.36]
+2026-10-16 17:29:52,868 | INFO | Totals row found at row 136, skipping it: [2919.58, 463.42, 2421.2000000000003, 80.92, 76.88, 804, 0, 403.75, 2919.58, 726.36]
+2026-10-16 17:29:52,868 | INFO | Totals row found at row 137, skipping it: [2919.58, 463.42, 2421.2000000000003, 80.92, 76.88, 804, 0, 403.75, 2919.58, 726.36]
+2026-10-16 17:29:52,868 | INFO | Debtor rows read: 10
+2026-10-16 17:29:52,874 | INFO | Column 5: expected 2421.20, got 2421.20 -> PASS
+2026-10-16 17:29:52,874 | INFO | Column 6: expected 80.92, got 80.92 -> PASS
+2026-10-16 17:29:52,875 | INFO | Rule: SUM | columns 5 and 6 | total: 10 | valid: 6 | removed: 4
+2026-10-16 17:29:52,875 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 17:29:52,876 | INFO | DEBUG pay<=0: Lindsey E. Biggers | pay 0.00 | prin 302.50 | int 4.54 | costs 111.00
+2026-10-16 17:29:52,877 | INFO | Copied Temp2 output template from C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx to output\Dentistry for Children.xlsx
+2026-10-16 17:29:52,878 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 17:29:53,031 | INFO | Template payment sheet formatted with 5 rows and 0 interest-only rows
+2026-10-16 17:29:53,035 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 70
+2026-10-16 17:29:53,035 | WARNING | No plaintiff found for claim 3404259.001
+2026-10-16 17:29:53,047 | WARNING | No plaintiff found for claim 3404259.001
+2026-10-16 17:29:53,047 | WARNING | No plaintiff found for claim 3404248.001
+2026-10-16 17:29:53,047 | WARNING | No plaintiff found for claim 3404482.001
+2026-10-16 17:29:53,048 | WARNING | No plaintiff found for claim 3406887.001
+2026-10-16 17:29:53,048 | WARNING | No plaintiff found for claim 3406887.001
+2026-10-16 17:29:53,049 | INFO | Cost rows read: 6 | total: 403.75
+2026-10-16 17:29:53,049 | INFO | Cost total: expected 403.75, got 403.75 -> PASS
+2026-10-16 17:29:53,152 | INFO | Sheet 'Cost' written with 6 rows
+2026-10-16 17:29:53,152 | INFO | Cost sheet added to output\Dentistry for Children.xlsx
+2026-10-16 17:29:53,152 | INFO | DEBUG client_name='Executive Financial Consultants 2' | override found=False
+2026-10-16 17:29:53,152 | INFO | ----- Processing: Executive Financial Consultants 2.xls -----
+2026-10-16 17:29:53,152 | INFO | Client share for 'Executive Financial Consultants 2' = 12.50% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:53,170 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:53,177 | INFO | Reading file: input\Executive Financial Consultants 2.xls
+2026-10-16 17:29:53,185 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:53,185 | INFO | Using sheet: Sheet1
+2026-10-16 17:29:53,187 | INFO | Totals row found at row 127, skipping it: [11295.99, 0, 7375.45, 2893.54, 0, 1027, 0, 2260, 11295.99, 3842.4700000000003]
+2026-10-16 17:29:53,197 | INFO | Totals row found at row 286, skipping it: [11295.99, 0, 7375.45, 2893.54, 0, 1027, 0, 2260, 11295.99, 3842.4700000000003]
+2026-10-16 17:29:53,198 | INFO | Totals row found at row 287, skipping it: [11295.99, 0, 7375.45, 2893.54, 0, 1027, 0, 2260, 11295.99, 3842.4700000000003]
+2026-10-16 17:29:53,199 | INFO | Debtor rows read: 38
+2026-10-16 17:29:53,200 | INFO | Column 5: expected 7375.45, got 7375.45 -> PASS
+2026-10-16 17:29:53,200 | INFO | Column 6: expected 2893.54, got 2893.54 -> PASS
+2026-10-16 17:29:53,201 | INFO | Rule: SUM | columns 5 and 6 | total: 38 | valid: 14 | removed: 24
+2026-10-16 17:29:53,202 | INFO | DEBUG rows added by cost-only rule: 2
+2026-10-16 17:29:53,202 | INFO | DEBUG added: Eric D. Martin | pay 100.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 100.00
+2026-10-16 17:29:53,202 | INFO | DEBUG added: Dalton Webb | pay 100.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 100.00
+2026-10-16 17:29:53,205 | INFO | Copied Temp2 output template from C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx to output\Executive Financial Consultants 2.xlsx
+2026-10-16 17:29:53,206 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 17:29:53,338 | INFO | Template payment sheet formatted with 11 rows and 0 interest-only rows
+2026-10-16 17:29:53,348 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 137
+2026-10-16 17:29:53,353 | INFO | Cost rows read: 42 | total: 2260.00
+2026-10-16 17:29:53,354 | INFO | Cost total: expected 2260.00, got 2260.00 -> PASS
+2026-10-16 17:29:53,504 | INFO | Sheet 'Cost' written with 42 rows
+2026-10-16 17:29:53,504 | INFO | Cost sheet added to output\Executive Financial Consultants 2.xlsx
+2026-10-16 17:29:53,508 | INFO | DEBUG client_name='Executive Financial Consultants' | override found=True
+2026-10-16 17:29:53,508 | INFO | ----- Processing: Executive Financial Consultants.xls -----
+2026-10-16 17:29:53,513 | INFO | Client share for 'Executive Financial Consultants' = 18.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:53,524 | INFO | Client share for 'Executive Financial Consultants' = 82.00% (column 'BWShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:53,524 | INFO | Client share for 'Executive Financial Consultants' = 100.00% (column 'BW Interest %', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:53,538 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:53,559 | INFO | Reading file: input\Executive Financial Consultants.xls
+2026-10-16 17:29:53,559 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:53,569 | INFO | Using sheet: Sheet1
+2026-10-16 17:29:53,579 | INFO | Totals row found at row 76, skipping it: [674.33, 0, 375, 285.41, 0, 0, 0, 183, 660.41, 339.17]
+2026-10-16 17:29:53,618 | INFO | Totals row found at row 621, skipping it: [674.33, 0, 375, 285.41, 0, 0, 0, 183, 660.41, 339.17]
+2026-10-16 17:29:53,620 | INFO | Totals row found at row 622, skipping it: [674.33, 0, 375, 285.41, 0, 0, 0, 183, 660.41, 339.17]
+2026-10-16 17:29:53,622 | INFO | Debtor rows read: 11
+2026-10-16 17:29:53,622 | INFO | Column 5: expected 375.00, got 375.00 -> PASS
+2026-10-16 17:29:53,622 | INFO | Column 6: expected 285.41, got 285.41 -> PASS
+2026-10-16 17:29:53,623 | INFO | Rule: SUM | columns 5 and 6 | total: 11 | valid: 8 | removed: 3
+2026-10-16 17:29:53,624 | INFO | DEBUG rows added by cost-only rule: 0
+2026-10-16 17:29:53,626 | INFO | Copied Temp2 output template from C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx to output\Executive Financial Consultants.xlsx
+2026-10-16 17:29:53,627 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=False | total_from_components=True | applied_formula=True
+2026-10-16 17:29:53,729 | INFO | Template payment sheet formatted with 5 rows and 3 interest-only rows
+2026-10-16 17:29:53,741 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 86
+2026-10-16 17:29:53,741 | INFO | Cost rows read: 5 | total: 183.00
+2026-10-16 17:29:53,741 | INFO | Cost total: expected 183.00, got 183.00 -> PASS
+2026-10-16 17:29:53,864 | INFO | Sheet 'Cost' written with 5 rows
+2026-10-16 17:29:53,864 | INFO | Cost sheet added to output\Executive Financial Consultants.xlsx
+2026-10-16 17:29:53,865 | INFO | DEBUG client_name='FBKC Sports Tenant LLC dba HyVee Arena' | override found=False
+2026-10-16 17:29:53,865 | INFO | ----- Processing: FBKC Sports Tenant LLC dba HyVee Arena.xls -----
+2026-10-16 17:29:53,869 | INFO | Client share for 'FBKC Sports Tenant LLC dba HyVee Arena' = 33.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:53,875 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:53,878 | INFO | Reading file: input\FBKC Sports Tenant LLC dba HyVee Arena.xls
+2026-10-16 17:29:53,880 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:53,880 | INFO | Using sheet: Sheet1
+2026-10-16 17:29:53,883 | INFO | Totals row found at row 45, skipping it: [1000, 0, 0, 0, 234.72, 359.15000000000003, 406.13, 0, 788.52, 211.48000000000002]
+2026-10-16 17:29:53,884 | INFO | Totals row found at row 74, skipping it: [1000, 0, 0, 0, 234.72, 359.15000000000003, 406.13, 0, 788.52, 211.48000000000002]
+2026-10-16 17:29:53,884 | INFO | Totals row found at row 75, skipping it: [1000, 0, 0, 0, 234.72, 359.15000000000003, 406.13, 0, 788.52, 211.48000000000002]
+2026-10-16 17:29:53,886 | INFO | Debtor rows read: 1
+2026-10-16 17:29:53,886 | INFO | Column 5: expected 0.00, got 0.00 -> PASS
+2026-10-16 17:29:53,887 | INFO | Column 6: expected 0.00, got 0.00 -> PASS
+2026-10-16 17:29:53,889 | INFO | Rule: SUM | columns 5 and 6 | total: 1 | valid: 1 | removed: 0
+2026-10-16 17:29:53,890 | INFO | DEBUG rows added by cost-only rule: 1
+2026-10-16 17:29:53,891 | INFO | DEBUG added: JustUs System Inc. | pay 1000.00 | prin 0.00 | int 0.00 | fees 234.72 | costs 359.15
+2026-10-16 17:29:53,894 | INFO | Copied Temp2 output template from C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx to output\FBKC Sports Tenant LLC dba HyVee Arena.xlsx
+2026-10-16 17:29:53,894 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 17:29:54,056 | INFO | Template payment sheet formatted with 1 rows and 0 interest-only rows
+2026-10-16 17:29:54,061 | ERROR | FAILED: FBKC Sports Tenant LLC dba HyVee Arena.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 219, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 184, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 17:29:54,061 | INFO | DEBUG client_name='Meduit Group, LLC' | override found=False
+2026-10-16 17:29:54,062 | INFO | ----- Processing: Meduit Group, LLC.xls -----
+2026-10-16 17:29:54,068 | INFO | Client share for 'Meduit Group, LLC' = 12.50% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:54,070 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:54,071 | INFO | Reading file: input\Meduit Group, LLC.xls
+2026-10-16 17:29:54,080 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:54,081 | INFO | Using sheet: Sheet1
+2026-10-16 17:29:54,086 | INFO | Totals row found at row 54, skipping it: [1449.08, 0, 1274.08, 100, 0, 75, 0, 0, 1449.08, 259.28000000000003]
+2026-10-16 17:29:54,090 | INFO | Totals row found at row 133, skipping it: [1449.08, 0, 1274.08, 100, 0, 75, 0, 0, 1449.08, 259.28000000000003]
+2026-10-16 17:29:54,091 | INFO | Totals row found at row 134, skipping it: [1449.08, 0, 1274.08, 100, 0, 75, 0, 0, 1449.08, 259.28000000000003]
+2026-10-16 17:29:54,092 | INFO | Debtor rows read: 6
+2026-10-16 17:29:54,093 | INFO | Column 5: expected 1274.08, got 1274.08 -> PASS
+2026-10-16 17:29:54,093 | INFO | Column 6: expected 100.00, got 100.00 -> PASS
+2026-10-16 17:29:54,094 | INFO | Rule: SUM | columns 5 and 6 | total: 6 | valid: 6 | removed: 0
+2026-10-16 17:29:54,095 | INFO | DEBUG rows added by cost-only rule: 1
+2026-10-16 17:29:54,095 | INFO | DEBUG added: Haley M. Lewis | pay 75.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 75.00
+2026-10-16 17:29:54,095 | INFO | Copied Temp2 output template from C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx to output\Meduit Group, LLC.xlsx
+2026-10-16 17:29:54,098 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 17:29:54,234 | INFO | Template payment sheet formatted with 5 rows and 0 interest-only rows
+2026-10-16 17:29:54,249 | ERROR | FAILED: Meduit Group, LLC.xls
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 219, in run_temp2
+    process_file(path, config, out_dir, log)
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\main_temp2.py", line 184, in process_file
+    cost_df = read_costs(cfg["input_file"], cfg["cost_identifier"],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 39, in read_costs
+    raw, start = _find_identifier(xls, identifier)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\cost_reader.py", line 34, in _find_identifier
+    raise ValueError(f"Identifier '{identifier}' not found in any sheet")
+ValueError: Identifier 'Cost Detail Report' not found in any sheet
+2026-10-16 17:29:54,250 | INFO | DEBUG client_name='NKC Health' | override found=True
+2026-10-16 17:29:54,251 | INFO | ----- Processing: NKC Health.xls -----
+2026-10-16 17:29:54,259 | INFO | Client share for 'NKC Health' = 25.00% (column 'ClientShare', sheet 'IntrestPercentage_Temp2')
+2026-10-16 17:29:54,295 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:54,311 | INFO | Reading file: input\NKC Health.xls
+2026-10-16 17:29:54,313 | INFO | Sheets found: ['Sheet1']
+2026-10-16 17:29:54,313 | INFO | Using sheet: Sheet1
+2026-10-16 17:29:54,324 | INFO | Totals row found at row 202, skipping it: [15441.02, 2114.4700000000003, 13582.720000000001, 2197.05, 0, 1775.72, 0, 2763.2200000000003, 10376.84, 5592.8]
+2026-10-16 17:29:54,328 | INFO | Totals row found at row 347, skipping it: [15441.02, 2114.4700000000003, 13582.720000000001, 2197.05, 0, 1775.72, 0, 2763.2200000000003, 10376.84, 5592.8]
+2026-10-16 17:29:54,328 | INFO | Totals row found at row 348, skipping it: [15441.02, 2114.4700000000003, 13582.720000000001, 2197.05, 0, 1775.72, 0, 2763.2200000000003, 10376.84, 5592.8]
+2026-10-16 17:29:54,328 | INFO | Debtor rows read: 71
+2026-10-16 17:29:54,328 | INFO | Column 5: expected 13582.72, got 13582.72 -> PASS
+2026-10-16 17:29:54,328 | INFO | Column 6: expected 2197.05, got 2197.05 -> PASS
+2026-10-16 17:29:54,331 | INFO | Rule: SUM | columns 5 and 6 | total: 71 | valid: 43 | removed: 28
+2026-10-16 17:29:54,333 | INFO | DEBUG rows added by cost-only rule: 1
+2026-10-16 17:29:54,333 | INFO | DEBUG added: Michael A. Freeman | pay 50.00 | prin 0.00 | int 0.00 | fees 0.00 | costs 50.00
+2026-10-16 17:29:54,334 | INFO | DEBUG pay<=0: Katybeth M. Hall | pay 0.00 | prin 2114.47 | int 0.00 | costs 0.00
+2026-10-16 17:29:54,337 | INFO | Copied Temp2 output template from C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx to output\NKC Health.xlsx
+2026-10-16 17:29:54,339 | INFO | DEBUG writer=C:\Users\Admin\OneDrive - StayAhead\Documents\Projects\B&W\temp2\src2\payment_writer.py | skip_interest_only=False | applied_from_payment=True | total_from_components=False | applied_formula=False
+2026-10-16 17:29:54,509 | INFO | Template payment sheet formatted with 38 rows and 0 interest-only rows
+2026-10-16 17:29:54,539 | INFO | Identifier 'Cost Detail Report' found on sheet 'Sheet1', row 212
+2026-10-16 17:29:54,539 | INFO | Cost rows read: 53 | total: 2763.22
+2026-10-16 17:29:54,539 | INFO | Cost total: expected 2763.22, got 2763.22 -> PASS
+2026-10-16 17:29:54,656 | INFO | Sheet 'Cost' written with 53 rows
+2026-10-16 17:29:54,656 | INFO | Cost sheet added to output\NKC Health.xlsx
+2026-10-16 17:29:54,656 | INFO | Finished. Success: 6 | Failed: 4 ['Arista Recovery Operator at Paola, LLC.xls', 'Consumer Collection Management, Inc.- Probate.xls', 'FBKC Sports Tenant LLC dba HyVee Arena.xls', 'Meduit Group, LLC.xls']
+2026-10-16 17:29:54,656 | INFO | ===== Run finished =====

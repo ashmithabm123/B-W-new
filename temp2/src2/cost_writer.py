@@ -1,11 +1,9 @@
 import logging
+from copy import copy
 from datetime import datetime
 from openpyxl import load_workbook
-from openpyxl.styles import Font
-from openpyxl.utils import get_column_letter
 
 log = logging.getLogger("remittance")
-MONEY_FMT = '"$"#,##0.00'
 
 
 def write_cost_sheet(path, sheet_name, cost_df, title, thru_date):
@@ -13,34 +11,29 @@ def write_cost_sheet(path, sheet_name, cost_df, title, thru_date):
         thru_date = datetime.now().strftime("%m-%d-%Y")
 
     wb = load_workbook(path)
-    if sheet_name in wb.sheetnames:
-        del wb[sheet_name]
-    ws = wb.create_sheet(sheet_name)
-    bold = Font(bold=True)
+    if sheet_name not in wb.sheetnames:
+        raise ValueError(f"Output template is missing the '{sheet_name}' sheet")
+    ws = wb[sheet_name]
 
-    ws["B1"] = title
-    ws["B1"].font = bold
+    ws["B1"] = f"{title.upper()} COST REPORT"
     ws["B2"] = f"Costs Thru {thru_date}"
-    ws["B2"].font = bold
-
-    ws["B5"] = "Total"
-    ws["B5"].font = bold
-    ws["D5"] = round(float(cost_df["AMOUNT"].sum()), 2)
-    ws["D5"].number_format = MONEY_FMT
-    ws["D5"].font = bold
-
     header_row = 7
-    for col, name in enumerate(cost_df.columns, start=1):
-        ws.cell(row=header_row, column=col, value=name).font = bold
+    data_start = header_row + 1
+    for row_idx in range(data_start, ws.max_row + 1):
+        for col_idx in range(1, max(ws.max_column, len(cost_df.columns)) + 1):
+            ws.cell(row=row_idx, column=col_idx).value = None
 
-    for r, row in enumerate(cost_df.itertuples(index=False), start=header_row + 1):
+    template_max_row = ws.max_row
+    for r, row in enumerate(cost_df.itertuples(index=False), start=data_start):
+        if r > template_max_row:
+            ws.row_dimensions[r].height = ws.row_dimensions[data_start].height
+            for col in range(1, max(ws.max_column, len(cost_df.columns)) + 1):
+                ws.cell(r, col)._style = copy(ws.cell(data_start, col)._style)
         for c, value in enumerate(row, start=1):
-            cell = ws.cell(row=r, column=c, value=value)
-            if c == 4:
-                cell.number_format = MONEY_FMT
+            ws.cell(row=r, column=c, value=value)
 
-    for i, w in enumerate([20, 45, 12, 12, 32, 18], start=1):
-        ws.column_dimensions[get_column_letter(i)].width = w
-
+    wb.calculation.fullCalcOnLoad = True
+    wb.calculation.forceFullCalc = True
     wb.save(path)
+    wb.close()
     log.info("Sheet '%s' written with %d rows", sheet_name, len(cost_df))

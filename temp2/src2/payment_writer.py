@@ -1,9 +1,8 @@
 import logging
 import re
+from copy import copy
 from datetime import datetime
 from openpyxl import load_workbook
-from openpyxl.styles import Font
-from openpyxl.utils import get_column_letter
 
 log = logging.getLogger("remittance")
 MONEY_FMT = '"$"#,##0.00'
@@ -40,6 +39,21 @@ def is_business(name):
 
     last_word = text.split(" ")[-1].replace(".", "").strip(",")
     return last_word in BUSINESS_SUFFIXES           # ends with a business suffix
+
+
+def _clear_rows(ws, first_row, last_column):
+    for row in ws.iter_rows(min_row=first_row, max_row=ws.max_row,
+                            max_col=max(ws.max_column, last_column)):
+        for cell in row:
+            cell.value = None
+
+
+def _copy_row_style(ws, source_row, target_row, last_column):
+    if target_row <= ws.max_row:
+        return
+    ws.row_dimensions[target_row].height = ws.row_dimensions[source_row].height
+    for column in range(1, last_column + 1):
+        ws.cell(target_row, column)._style = copy(ws.cell(source_row, column)._style)
 
 
 def format_payment_sheet(path, df, cfg):
@@ -135,96 +149,50 @@ def format_payment_sheet(path, df, cfg):
         rows.append(row)
 
     wb = load_workbook(path)
-    old = wb.worksheets[0]
-    name = old.title
-    wb.remove(old)
-    ws = wb.create_sheet(name, 0)
-    bold = Font(bold=True)
+    required_sheets = {"Payments", "IntOnly", "Summary1", "Summary2",
+                       "Summary3", "Summary4"}
+    missing_sheets = required_sheets.difference(wb.sheetnames)
+    if missing_sheets:
+        raise ValueError(f"Output template is missing required sheets: {sorted(missing_sheets)}")
 
-    ws["A1"] = cfg["pay_title"].upper()
-    ws["A1"].font = bold
+    ws = wb["Payments"]
+    data_start = 9
+    style_source_row = data_start
+    _clear_rows(ws, data_start, len(HEADERS))
+    ws["A1"] = f"{cfg['pay_title'].upper()} PAYMENT SHEET"
     ws["A2"] = f"Payments {thru_word} {thru}"
-    ws["A2"].font = bold
-
     ws["G4"] = pct
     ws["H4"] = round(1 - pct, 4)
     for c in ("G4", "H4"):
         ws[c].number_format = pct_fmt
-        ws[c].font = bold
+    for index, row in enumerate(rows, start=data_start):
+        _copy_row_style(ws, style_source_row, index, len(HEADERS))
+        for column, value in enumerate(row, start=1):
+            ws.cell(row=index, column=column, value=value)
 
-    ws["C5"] = "Total"
-    ws["C5"].font = bold
-    for col in range(4, 10):                      # D..I
-        total = round(sum(r[col - 1] for r in rows), 2)
-        cell = ws.cell(row=5, column=col, value=total)
-        cell.number_format = MONEY_FMT
-        cell.font = bold
+    int_ws = wb["IntOnly"]
+    int_data_start = 8
+    _clear_rows(int_ws, int_data_start, 3)
+    int_ws["A1"] = cfg.get("intonly_title", cfg["pay_title"])
+    int_ws["A2"] = f"Interest Only Payments {thru_word} {thru}"
+    int_ws["B5"] = "Total"
+    int_ws["C5"] = "=SUM(C8:C1000)"
+    int_ws["C5"].number_format = MONEY_FMT
+    for index, row in enumerate(interest_only_rows, start=int_data_start):
+        _copy_row_style(int_ws, int_data_start, index, 3)
+        for column, value in enumerate((row[0], row[1], row[8]), start=1):
+            int_ws.cell(row=index, column=column, value=value)
 
-    for c, h in enumerate(HEADERS, start=1):
-        ws.cell(row=7, column=c, value=h).font = bold
+    if thru.upper() == "AUTO":
+        thru = datetime.now().strftime("%m-%d-%Y")
+    for sheet_name in ("Summary1", "Summary2", "Summary3", "Summary4"):
+        summary = wb[sheet_name]
+        summary["A15"] = cfg["pay_title"].upper()
+        summary["A20"] = f"Statement Thru {thru}"
 
-    for i, row in enumerate(rows, start=8):
-        for c, v in enumerate(row, start=1):
-            cell = ws.cell(row=i, column=c, value=v)
-            if 4 <= c <= 9:
-                cell.number_format = MONEY_FMT
-
-    for i, w in enumerate([26, 45, 12, 16, 22, 16, 15, 15, 18, 18], start=1):
-        ws.column_dimensions[get_column_letter(i)].width = w
-
-    if separate_interest_only:
-        if "IntOnly" in wb.sheetnames:
-            wb.remove(wb["IntOnly"])
-        int_ws = wb.create_sheet("IntOnly")
-        if cfg.get("intonly_compact"):
-            int_ws["A1"] = cfg.get("intonly_title", cfg["pay_title"])
-            int_ws["A1"].font = bold
-            int_ws["A2"] = f"Interest Only Payments {thru_word} {thru}"
-            int_ws["A2"].font = bold
-            int_ws["B5"] = "Total"
-            int_ws["B5"].font = bold
-            total_cell = int_ws.cell(
-                row=5, column=3,
-                value=round(sum(r[8] for r in interest_only_rows), 2))
-            total_cell.number_format = MONEY_FMT
-            total_cell.font = bold
-            for col, heading in enumerate(
-                    ("DEFENDANT", "PLAINTIFF", "BW LLP INTEREST"), start=1):
-                int_ws.cell(row=7, column=col, value=heading).font = bold
-            for i, row in enumerate(interest_only_rows, start=8):
-                for col, value in enumerate((row[0], row[1], row[8]), start=1):
-                    cell = int_ws.cell(row=i, column=col, value=value)
-                    if col == 3:
-                        cell.number_format = MONEY_FMT
-            for col, width in enumerate((30, 55, 20), start=1):
-                int_ws.column_dimensions[get_column_letter(col)].width = width
-        else:
-            int_ws["A1"] = f"{cfg['pay_title'].upper()} - INTEREST ONLY"
-            int_ws["A1"].font = bold
-            int_ws["A2"] = f"Payments {thru_word} {thru}"
-            int_ws["A2"].font = bold
-            int_ws["G4"] = pct
-            int_ws["H4"] = round(1 - pct, 4)
-            for c in ("G4", "H4"):
-                int_ws[c].number_format = pct_fmt
-                int_ws[c].font = bold
-            int_ws["C5"] = "Total"
-            int_ws["C5"].font = bold
-            for col in range(4, 10):
-                cell = int_ws.cell(row=5, column=col,
-                                   value=round(sum(r[col - 1] for r in interest_only_rows), 2))
-                cell.number_format = MONEY_FMT
-                cell.font = bold
-            for c, h in enumerate(HEADERS, start=1):
-                int_ws.cell(row=7, column=c, value=h).font = bold
-            for i, row in enumerate(interest_only_rows, start=8):
-                for c, v in enumerate(row, start=1):
-                    cell = int_ws.cell(row=i, column=c, value=v)
-                    if 4 <= c <= 9:
-                        cell.number_format = MONEY_FMT
-            for i, w in enumerate([26, 45, 12, 16, 22, 16, 15, 15, 18, 18], start=1):
-                int_ws.column_dimensions[get_column_letter(i)].width = w
-
+    wb.calculation.fullCalcOnLoad = True
+    wb.calculation.forceFullCalc = True
     wb.save(path)
-    log.info("First sheet formatted with %d rows and %d interest-only rows",
+    wb.close()
+    log.info("Template payment sheet formatted with %d rows and %d interest-only rows",
              len(rows), len(interest_only_rows))

@@ -7,6 +7,7 @@ DEFAULTS = [
     ("input_file", "input/Consumer Collection Management, Inc. 2.xls"),
     ("sheet_name", "Remittance Report"),
     ("output_file", "output/valid_remittance.xlsx"),
+    ("output_template_temp2", r"C:\Users\Admin\Downloads\OutputFile_Temp2.xlsx"),
     ("log_file", "logs/app.log"),
     ("log_level", "INFO"),
     ("rule_mode", "SUM"),            # BOTH = both columns non-zero, ANY = either

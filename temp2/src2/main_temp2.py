@@ -1,20 +1,28 @@
 from pathlib import Path
+from shutil import copyfile
+
+import pandas as pd
 
 from config.config_loader import load_config
 from logs.logger_setup import setup_logger
-from temp2.src2.reader import read_report
+from temp2.src2.reader import (
+    _is_totals_row,
+    _pick_sheet,
+    _to_number,
+    read_report,
+)
 from temp2.src2.validator import check_totals, check_cost_total
 from temp2.src2.cleaner import keep_valid_rows
 from temp2.src2.client_share import get_client_share
 from temp2.src2.payment_writer import format_payment_sheet
 from temp2.src2.cost_reader import read_costs
 from temp2.src2.cost_writer import write_cost_sheet
-from temp2.src2.expected_totals import find_expected_totals
 
 # ---- Fixed logic values (not in config.xlsx) ----
 PRINCIPAL_COL = 5            # 0-based column position of Principal
 INTEREST_COL = 6             # 0-based column position of Interest
 SHARE_COLUMN = "ClientShare"  # master table column used for every client
+LEADING_COLUMNS = 3  # Claim, Debtor Name, Ref Acct # precede report columns
 
 # Options applied to every file
 COMMON_OPTIONS = {
@@ -65,6 +73,32 @@ def _text(value, default):
     if isinstance(value, str) and value.strip() and value.strip().lower() != "nan":
         return value.strip()
     return default
+
+
+def find_expected_totals(path, sheet_name, columns, principal_idx, interest_idx,
+                         cost_marker):
+    result = {"principal": None, "interest": None, "cost": None}
+    n = len(columns)
+
+    with pd.ExcelFile(path) as xls:
+        sheet = _pick_sheet(xls, sheet_name)
+        raw = xls.parse(sheet, header=None)
+
+    for _, row in raw.iterrows():
+        vals = [v for v in row.tolist() if pd.notna(v) and str(v).strip() != ""]
+        if not vals:
+            continue
+
+        if result["principal"] is None and _is_totals_row(vals, n):
+            nums = [_to_number(v) for v in vals]
+            result["principal"] = round(nums[principal_idx - LEADING_COLUMNS], 2)
+            result["interest"] = round(nums[interest_idx - LEADING_COLUMNS], 2)
+
+        if (result["cost"] is None and len(vals) > 1
+                and str(vals[0]).strip().lower().startswith(cost_marker.lower())):
+            result["cost"] = _to_number(vals[1])
+
+    return result
 
 
 def process_file(input_path: Path, config: dict, out_dir: Path, log):
@@ -136,8 +170,12 @@ def process_file(input_path: Path, config: dict, out_dir: Path, log):
                  r.iloc[1], r.iloc[3], r.iloc[5], r.iloc[6], r.iloc[8])
 
     out_dir.mkdir(parents=True, exist_ok=True)
-    valid.to_excel(cfg["output_file"], index=False)
-    log.info("Saved valid data to %s", cfg["output_file"])
+    template = Path(str(cfg["output_template_temp2"]).strip().strip('"'))
+    if not template.is_file():
+        raise FileNotFoundError(f"Temp2 output template not found: {template}")
+    copyfile(template, cfg["output_file"])
+    log.info("Copied Temp2 output template from %s to %s",
+             template, cfg["output_file"])
 
     format_payment_sheet(cfg["output_file"], valid, cfg)
 
