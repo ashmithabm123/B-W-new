@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from config.config_loader import load_config
-from temp2.src2.logger_setup import setup_logger
+from logs.logger_setup import setup_logger
 from temp2.src2.reader import read_report
 from temp2.src2.validator import check_totals, check_cost_total
 from temp2.src2.cleaner import keep_valid_rows
@@ -28,12 +28,14 @@ COMMON_OPTIONS = {
 CLIENT_OVERRIDES = {
     "NKC Health": {"fees_as_principal": False},
     "Dentistry for Children": {"skip_zero_payment": True},
-    "Consumer Collection Management, Inc.": {"skip_interest_only": True},
+    "Consumer Collection Management, Inc.": {"skip_interest_only": True,
+                                             "applied_from_payment": False,
+                                             "total_from_components": True},
 }
 
 OPTION_KEYS = ("include_cost_only", "fees_as_principal", "thru_word",
                "pct_fmt", "applied_from_payment", "skip_zero_payment",
-               "skip_interest_only")
+               "skip_interest_only", "total_from_components")
 
 
 def _text(value, default):
@@ -55,6 +57,7 @@ def process_file(input_path: Path, config: dict, out_dir: Path, log):
     for k in OPTION_KEYS:
         if k in opts:
             cfg[k] = opts[k]
+    log.info("DEBUG client_name=%r | override found=%s", client_name, client_name in CLIENT_OVERRIDES)
 
     log.info("----- Processing: %s -----", input_path.name)
 

@@ -1,4 +1,5 @@
 import logging
+import re
 from datetime import datetime
 from openpyxl import load_workbook
 from openpyxl.styles import Font
@@ -9,6 +10,36 @@ MONEY_FMT = '"$"#,##0.00'
 HEADERS = ["DEFENDANT'S NAME", "PLAINTIFF", "REF NO.", "TOTAL PAYMENT",
            "APPLIED TO PRINCIPAL", "COSTS RETURNED", "CLIENT SHARE",
            "BW, LLP SHARE", "BW, LLP INTEREST", "Notes"]
+
+# ---------------------------------------------------------------------
+# Business-defendant rules (client requirement)
+# ---------------------------------------------------------------------
+BUSINESS_SUFFIXES = {
+    "llc", "llp", "lp", "pllc", "pc", "pa", "inc", "incorporated",
+    "corp", "corporation", "co", "company", "ltd", "limited", "trust",
+    "association", "assoc", "partnership", "holdings",
+}   # periods are removed before comparing, so L.L.C. -> llc, P.C. -> pc, P.A. -> pa
+
+DBA_PATTERN = re.compile(r"(?<![a-z0-9])d[./]?b[./]?a\.?(?![a-z0-9])")   # dba, d/b/a, d.b.a.
+STARTS_PATTERN = re.compile(r"^(the|city of)(?![a-z0-9])")               # "The ...", "City of ..."
+
+
+def is_business(name):
+    """True if the defendant name looks like a business. Whole words only, not case-sensitive."""
+    text = " ".join(str(name).lower().split())
+    text = text.rstrip(" .,")                       # ignore trailing periods and commas
+    if not text:
+        return False
+
+    if "&" in text or any(ch.isdigit() for ch in text):
+        return True                                 # ampersand or a number anywhere
+    if DBA_PATTERN.search(text):
+        return True                                 # DBA / D/B/A anywhere
+    if STARTS_PATTERN.match(text):
+        return True                                 # begins with 'The' or 'City of'
+
+    last_word = text.split(" ")[-1].replace(".", "").strip(",")
+    return last_word in BUSINESS_SUFFIXES           # ends with a business suffix
 
 
 def format_payment_sheet(path, df, cfg):
@@ -22,7 +53,9 @@ def format_payment_sheet(path, df, cfg):
     applied_from_payment = cfg.get("applied_from_payment", False)
     skip_zero_payment = cfg.get("skip_zero_payment", False)
     skip_interest_only = cfg.get("skip_interest_only", False)
-    log.info("DEBUG skip_interest_only=%s", skip_interest_only)
+    total_from_components = cfg.get("total_from_components", False)
+    log.info("DEBUG writer=%s | skip_interest_only=%s | applied_from_payment=%s | total_from_components=%s",
+             __file__, skip_interest_only, applied_from_payment, total_from_components)
     thru_word = cfg.get("thru_word", "Thru")
     pct_fmt = cfg.get("pct_fmt", "0%")
 
@@ -47,6 +80,10 @@ def format_payment_sheet(path, df, cfg):
         if fees_as_principal and principal == 0 and interest == 0 and fees != 0:
             principal = round(fees, 2)      # Fees-only payment counts as applied amount
 
+        if total_from_components:
+            # Total payment = principal + costs + interest (ignores unexplained extra in the report's Payment column)
+            total_pay = round(principal + costs + round(interest, 2), 2)
+
         if not str(r["Claim"]).strip():
             client = round(float(r["Client Proceeds"]), 2)
             firm_share = round(float(r["Fees Due"]), 2)
@@ -60,8 +97,13 @@ def format_payment_sheet(path, df, cfg):
         elif round(principal + client, 2) == 0:      # current rule, unchanged
             continue
 
+        name_out = r["Debtor Name"]
+        business = is_business(name_out)
+        # 'business' is True for business defendants. Add the client's required
+        # handling here (e.g. keep the name unchanged, set a note, etc.).
+
         rows.append([
-            r["Debtor Name"], r["Plaintiff"], r["Ref Acct #"],
+            name_out, r["Plaintiff"], r["Ref Acct #"],
             total_pay,
             principal,
             costs,

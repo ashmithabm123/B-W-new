@@ -11,7 +11,7 @@ DEFAULTS = [
     ("log_level", "INFO"),
     ("rule_mode", "SUM"),            # BOTH = both columns non-zero, ANY = either
     ("principal_col_index", "5"),     # 0-based column number
-    ("interest_col_index", "7"),      # 0-based column number
+    ("interest_col_index", "8"),      # 0-based column number
     ("expected_principal_total", "49090.97"),
     ("expected_interest_total", "6689.97"),
         # ---- Cost sheet ----
